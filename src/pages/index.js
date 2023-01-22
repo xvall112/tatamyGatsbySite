@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql } from "gatsby";
 import { MenuContext } from "../Context/MenuContext";
 
 //components
 import IndexView from "../views/index/index";
-
+import Tabs from "../layouts/Main/components/Tabs";
 const IndexPage = ({ location }) => {
   const { setPathname } = useContext(MenuContext);
   setPathname(location.pathname);

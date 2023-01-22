@@ -16,7 +16,6 @@ const Index = () => {
         <Hero />
       </Container2>
       <Container>
-        <Title title={<Trans>Následující turnaj</Trans>} />
         <NextTournament />
       </Container>
       <Container>

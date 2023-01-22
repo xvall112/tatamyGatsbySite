@@ -1,6 +1,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+const { languages, defaultLanguage } = require("./languages");
 module.exports = {
   siteMetadata: {
     title: `Tatamy`,
@@ -15,6 +16,7 @@ module.exports = {
         token: process.env.SANITY_TOKEN,
       },
     },
+    `gatsby-plugin-layout`,
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -57,15 +59,16 @@ module.exports = {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
-        languages: [`cs`, `en`],
-        generateDefaultLanguagePage: true,
-        defaultLanguage: `cs`,
-        fallbackLanguage: `cs`,
+        languages,
+        defaultLanguage,
+
         siteUrl: `https://localhost:8000`,
         // if you are using trailingSlash gatsby config include it here, as well (the default is 'always')
 
         // you can pass any i18next options
         i18nextOptions: {
+          fallbackLng: defaultLanguage,
+          supportedLngs: languages,
           interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
           },

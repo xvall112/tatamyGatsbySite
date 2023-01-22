@@ -8,7 +8,7 @@ const Container = ({ children, ...rest }) => (
     width={1}
     margin={"0 auto"}
     paddingX={2}
-    paddingBottom={{ xs: 4, sm: 6, md: 6 }}
+    paddingY={{ xs: 3 }}
     {...rest}
   >
     {children}

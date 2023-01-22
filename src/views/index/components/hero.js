@@ -1,9 +1,9 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Trans, Link } from "gatsby-plugin-react-i18next";
 //materialUi
 import { Button, Box, Grid } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -57,7 +57,7 @@ const Hero = () => {
               <GatsbyImage
                 image={car.image.asset.gatsbyImageData}
                 alt={car.image.asset.filename}
-                style={{ height: "auto", objectFit: "fill", margin: "auto 0" }}
+                style={{ height: "60vh", objectFit: "fill", margin: "auto 0" }}
               />
               <Grid container justifyContent="center">
                 <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}>
@@ -65,7 +65,7 @@ const Hero = () => {
                     variant="contained"
                     color="secondary"
                     component={Link}
-                    to={car.link}
+                    to={`/${car.link}`}
                     fullWidth
                   >
                     <Trans>Více info</Trans>

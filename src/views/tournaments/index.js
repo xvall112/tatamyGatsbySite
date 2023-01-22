@@ -8,9 +8,9 @@ import Cards from "./components/cards";
 
 export const query = graphql`
   query {
-    nextTournaments: allSanityNextTournaments {
+    nextTournaments: allSanityNextTournaments(sort: { date: ASC }) {
       nodes {
-        date(formatString: "DD-MM-YYYY")
+        date(formatString: "DD.MM.YYYY")
         slug {
           current
         }
@@ -27,9 +27,9 @@ export const query = graphql`
         }
       }
     }
-    pastTournaments: allSanityPastTournaments {
+    pastTournaments: allSanityPastTournaments(sort: { date: DESC }) {
       nodes {
-        date(formatString: "DD-MM-YYYY")
+        date(formatString: "DD.MM.YYYY")
         name
         slug {
           current
@@ -57,11 +57,11 @@ const Index = () => {
     <>
       <Container>
         <Title title={<Trans>Nadcházející turnaje</Trans>} />
-        <Cards cards={nextTournaments} />;
+        <Cards cards={nextTournaments} />
       </Container>
       <Container>
         <Title title={<Trans>Předešlé turnaje</Trans>} />
-        <Cards cards={pastTournaments} />;
+        <Cards cards={pastTournaments} />
       </Container>
     </>
   );

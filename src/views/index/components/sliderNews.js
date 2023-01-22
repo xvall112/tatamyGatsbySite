@@ -8,8 +8,9 @@ import { useTheme } from "@mui/material/styles";
 
 export const query = graphql`
   query {
-    allSanityNews {
+    allSanityNews(limit: 4) {
       nodes {
+        id
         title
         link
         titleImage {
@@ -18,7 +19,7 @@ export const query = graphql`
             gatsbyImageData(
               placeholder: BLURRED
               layout: CONSTRAINED
-              fit: FILL
+
               height: 160
             )
           }
@@ -46,7 +47,7 @@ const SliderNews = () => {
       >
         {allSanityNews.nodes.map((news) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={news.id}>
               <Box
                 sx={{
                   borderRadius: theme.rounded,
@@ -56,6 +57,7 @@ const SliderNews = () => {
                 <Box
                   component={"a"}
                   href={news.link}
+                  target="_blank"
                   sx={{ textDecoration: "none" }}
                 >
                   <GatsbyImage

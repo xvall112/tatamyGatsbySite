@@ -1,6 +1,7 @@
 import React from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { Link, useI18next, Trans } from "gatsby-plugin-react-i18next";
 //materialUi
 import { useTheme } from "@mui/material/styles";
 import { Grid, Box, Typography, Divider } from "@mui/material";
@@ -54,6 +55,8 @@ const Footer = () => {
     documents,
     aboutTatamy,
   } = data.sanityOrganization;
+  const { language } = useI18next();
+
   return (
     <>
       <Container>
@@ -72,7 +75,9 @@ const Footer = () => {
             </Box>
           </Grid>
           <Grid item xs={12} lg={3}>
-            <Typography align="center">{aboutTatamy.cs}</Typography>
+            <Typography align="center">
+              {language === "cs" ? aboutTatamy.cs : aboutTatamy.en}
+            </Typography>
             <Social
               linkYouTube={youtube}
               linkFacebook={facebook}
@@ -106,7 +111,7 @@ const Footer = () => {
                       to={item.slug.current}
                       sx={{ textDecoration: "none" }}
                     >
-                      {item.title.cs}
+                      {language === "cs" ? item.title.cs : item.title.en}
                     </Typography>
                   </Box>
                 );
@@ -120,7 +125,7 @@ const Footer = () => {
               fontWeight="700"
               sx={{ mb: 1 }}
             >
-              Dokumenty ke stažení
+              <Trans>Dokumenty ke stažení</Trans>
             </Typography>
             <Box
               component={"ul"}

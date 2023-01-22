@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { Trans } from "gatsby-plugin-react-i18next";
 //materialUi
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 //components
 import Title from "../../components/Title";
 import Container from "../../components/Container";
@@ -10,7 +10,10 @@ import CardChampions from "./component/cardChampions";
 
 export const query = graphql`
   query {
-    mens: allSanityChampions(filter: { sex: { eq: "male" } }) {
+    mens: allSanityChampions(
+      filter: { sex: { eq: "male" } }
+      sort: { weight: ASC }
+    ) {
       nodes {
         weight
         name
@@ -19,7 +22,7 @@ export const query = graphql`
             gatsbyImageData(
               placeholder: BLURRED
               layout: CONSTRAINED
-              aspectRatio: 0.7
+              aspectRatio: 0.8
             )
             filename
           }
@@ -30,7 +33,10 @@ export const query = graphql`
         gym
       }
     }
-    women: allSanityChampions(filter: { sex: { eq: "female" } }) {
+    women: allSanityChampions(
+      filter: { sex: { eq: "female" } }
+      sort: { weight: ASC }
+    ) {
       nodes {
         weight
         name
@@ -58,7 +64,7 @@ const Champions = () => {
       {mens.nodes.length !== 0 && (
         <Container>
           <Title title={<Trans>Muži</Trans>} />
-          <Grid container direction="row" spacing={3}>
+          <Grid container direction="row" spacing={2}>
             {mens.nodes.map((men) => {
               return (
                 <Grid item xs={12} md={4} lg={3}>
@@ -80,7 +86,7 @@ const Champions = () => {
       {women.nodes.length !== 0 && (
         <Container>
           <Title title={<Trans>Ženy</Trans>} />
-          <Grid container direction="row" spacing={3}>
+          <Grid container direction="row" spacing={2}>
             {women.nodes.map((woman) => {
               return (
                 <Grid item xs={12} md={4} lg={3}>

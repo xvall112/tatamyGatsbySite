@@ -4,13 +4,13 @@ import { FiFacebook } from "react-icons/fi";
 import { AiOutlineYoutube } from "react-icons/ai";
 //materialUI
 import { Grid, IconButton } from "@mui/material";
-const Social = ({ linkYouTube, linkFacebook, linkInstagram }) => {
+const Social = ({ linkYouTube, linkFacebook, linkInstagram, size }) => {
   return (
     <Grid
       container
-      justifyContent="space-around"
       alignItems="center"
       direction="row"
+      justifyContent="space-around"
     >
       {linkInstagram && (
         <Grid item>
@@ -20,7 +20,7 @@ const Social = ({ linkYouTube, linkFacebook, linkInstagram }) => {
             component="a"
             href={linkInstagram}
           >
-            <IoLogoInstagram fontSize="40px" />
+            <IoLogoInstagram fontSize={size || "40px"} />
           </IconButton>
         </Grid>
       )}
@@ -30,10 +30,9 @@ const Social = ({ linkYouTube, linkFacebook, linkInstagram }) => {
             color="secondary"
             aria-label="soc site"
             component="a"
-            size="large"
             href={linkFacebook}
           >
-            <FiFacebook fontSize="30px" />
+            <FiFacebook fontSize={size || "30px"} />
           </IconButton>
         </Grid>
       )}
@@ -43,10 +42,9 @@ const Social = ({ linkYouTube, linkFacebook, linkInstagram }) => {
             color="secondary"
             aria-label="soc site"
             component="a"
-            size="large"
             href={linkYouTube}
           >
-            <AiOutlineYoutube fontSize="40px" />
+            <AiOutlineYoutube fontSize={size || "40px"} />
           </IconButton>
         </Grid>
       )}

@@ -44,18 +44,18 @@ export const dark = {
   primary: {
     main: "#E31910",
     light: "#2196f3",
-    dark: "#0d47a1",
+    dark: "#a7130c",
     contrastText: "#fff",
   },
   secondary: {
     light: "#FFEA41",
     main: "#FFFFFF",
-    dark: "#DBBE01",
+    dark: "#E31910",
     contrastText: "rgba(0, 0, 0, 0.87)",
   },
   text: {
     primary: "#FFFFFF",
-    secondary: "#AEB0B4",
+    secondary: "#eeeeee",
   },
   divider: "rgba(255, 255, 255, 0.12)",
   background: {

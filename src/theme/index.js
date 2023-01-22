@@ -28,9 +28,9 @@ const getTheme = (mode) =>
               borderRadius: 10,
               paddingTop: 10,
               paddingBottom: 10,
-              border: "3px solid white",
             },
             containedSecondary: mode === "light" ? { color: "white" } : {},
+            contained: { border: "3px solid white" },
           },
         },
         MuiInputBase: {

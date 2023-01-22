@@ -12,8 +12,8 @@ import Select from "@mui/material/Select";
 import Tabs from "./Tabs";
 
 const Header = () => {
-  const { originalPath, languages } = useI18next();
-  console.log(languages);
+  const { originalPath, languages, language } = useI18next();
+
   return (
     <>
       <Box sx={{ backgroundColor: "white" }}>
@@ -25,7 +25,7 @@ const Header = () => {
               justifyContent="space-between"
               alignItems="center"
             >
-              <Grid item xs={4} md={1}>
+              <Grid item xs={4} md={1} component={Link} to={"/"}>
                 <StaticImage
                   src="../../../images/MainLogo.png"
                   alt="Logo"
@@ -33,30 +33,26 @@ const Header = () => {
                   layout="constrained"
                 />
               </Grid>
-              <Grid item>
+              <Grid item sx={{ "& svg": { color: "black" } }}>
                 <FormControl size="small">
                   <Select
                     sx={{ color: "black" }}
                     labelId="select-lang"
                     id="selectLang"
+                    value={language}
                   >
-                    <MenuItem
-                      value={"/"}
-                      to={originalPath}
-                      language={"cs"}
-                      component={Link}
-                    >
-                      CZ
-                    </MenuItem>
-
-                    <MenuItem
-                      value={"en"}
-                      to={originalPath}
-                      language={"en"}
-                      component={Link}
-                    >
-                      EN
-                    </MenuItem>
+                    {languages.map((lng) => {
+                      return (
+                        <MenuItem
+                          value={lng}
+                          to={originalPath}
+                          language={lng}
+                          component={Link}
+                        >
+                          {lng}
+                        </MenuItem>
+                      );
+                    })}
                   </Select>
                 </FormControl>
               </Grid>

@@ -7,8 +7,9 @@ import { Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 export const query = graphql`
   query {
-    allSanityVideos {
+    allSanityVideos(limit: 4) {
       nodes {
+        id
         title
         linkYouTube
       }
@@ -34,7 +35,7 @@ const SliderVideo = () => {
       >
         {allSanityVideos.nodes.map((video) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={video.id}>
               <Box
                 sx={{
                   borderRadius: theme.rounded,
