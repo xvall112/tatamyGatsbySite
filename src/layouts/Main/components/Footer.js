@@ -154,7 +154,7 @@ const Footer = () => {
         </Grid>
       </Container>
       <Box
-        py={1}
+        py={3}
         display="flex"
         flexDirection="column"
         sx={{ backgroundColor: "black" }}

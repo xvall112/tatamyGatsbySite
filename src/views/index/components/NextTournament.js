@@ -13,7 +13,7 @@ export const query = graphql`
     sanityHomePage {
       nextTournament {
         name
-        date(formatString: "DD-MM-YYYY")
+        date(formatString: "DD.MM.YYYY")
         shortDescription {
           en
           cs
@@ -52,7 +52,17 @@ const NextTournament = () => {
         <>
           <Title title={<Trans>Následující turnaj</Trans>} />
           <Grid container direction="row" spacing={{ xs: 2, md: 4 }}>
-            <Grid item xs={12} lg={6}>
+            <Grid
+              item
+              xs={12}
+              lg={6}
+              sx={{
+                "& img": {
+                  borderRadius: `${theme.rounded} ${theme.rounded}`,
+                  WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
+                },
+              }}
+            >
               <GatsbyImage
                 image={nextTournament?.titleImage?.asset?.gatsbyImageData}
                 alt={nextTournament.titleImage.asset?.filename}
@@ -101,7 +111,7 @@ const NextTournament = () => {
                 <Button
                   fullWidth
                   variant="contained"
-                  color="secondary"
+                  color="success"
                   component={"a"}
                   href={nextTournament.open.registration}
                   sx={{ mt: 1, backgroundColor: `${nextTournament.color}` }}

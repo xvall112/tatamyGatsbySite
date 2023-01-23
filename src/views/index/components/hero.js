@@ -6,7 +6,14 @@ import { Navigation, Pagination } from "swiper";
 import { Trans, Link } from "gatsby-plugin-react-i18next";
 //materialUi
 import { Button, Box, Grid } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
+
+const StyledImg = styled(GatsbyImage)(({ theme }) => ({
+  "& img": {
+    borderRadius: ` 0 0 ${theme.rounded} ${theme.rounded}`,
+    WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
+  },
+}));
 
 export const query = graphql`
   query {
@@ -54,11 +61,42 @@ const Hero = () => {
         {data?.sanityHomePage?.carousel?.map((car) => {
           return (
             <SwiperSlide key={car.name}>
-              <GatsbyImage
-                image={car.image.asset.gatsbyImageData}
-                alt={car.image.asset.filename}
-                style={{ height: "60vh", objectFit: "fill", margin: "auto 0" }}
-              />
+              <Box
+                style={{
+                  display: "grid",
+                  borderRadius: ` 0 0 ${theme.rounded} ${theme.rounded}`,
+                  WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
+                  overflow: "hidden",
+                }}
+              >
+                <Box
+                  style={{
+                    borderRadius: ` 0 0 ${theme.rounded} ${theme.rounded}`,
+                    WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
+                    // By using the same grid area for both, they are stacked on top of each other
+                    gridArea: "1/1",
+                    position: "relative",
+                    height: "60vh",
+                    alignItems: "center",
+                    zIndex: 100,
+                    // This centers the other elements inside the hero component
+                    display: "grid",
+                    background:
+                      "radial-gradient(circle, rgba(50,50,50,0.2) 0%, rgba(0,0,0,0.8998949921765581) 100%)",
+                  }}
+                ></Box>
+
+                <StyledImg
+                  image={car.image.asset.gatsbyImageData}
+                  alt={car.image.asset.filename}
+                  style={{
+                    height: "60vh",
+                    objectFit: "fill",
+                    margin: "auto 0",
+                    gridArea: "1/1",
+                  }}
+                />
+              </Box>
               <Grid container justifyContent="center">
                 <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}>
                   <Button

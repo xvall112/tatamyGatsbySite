@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
+
 import { GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby-plugin-react-i18next";
 //materialUi
 import { Box, Grid, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -17,9 +18,16 @@ const Cards = ({ cards }) => {
               overflow: "hidden",
             }}
           >
-            <Link
+            <Box
+              component={Link}
               to={`/${card.slug.current}`}
-              style={{ textDecoration: "none" }}
+              sx={{
+                textDecoration: "none",
+                "& img": {
+                  borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                  WebkitBorderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                },
+              }}
             >
               <GatsbyImage
                 image={card.titleImage.asset.gatsbyImageData}
@@ -37,7 +45,7 @@ const Cards = ({ cards }) => {
                 </Typography>
                 <Typography color="text.primary">{card.date}</Typography>
               </Box>
-            </Link>
+            </Box>
           </Box>
         </Grid>
       ))}

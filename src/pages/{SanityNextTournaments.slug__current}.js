@@ -50,6 +50,7 @@ export const query = graphql`
       }
       titleImage {
         asset {
+          filename
           gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
         }
       }

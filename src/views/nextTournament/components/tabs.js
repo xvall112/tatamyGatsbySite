@@ -76,13 +76,13 @@ export default function FullWidthTabs({ gala, superfight, open }) {
           textColor="inherit"
           aria-label="full width tabs example"
         >
-          <Tab label="GALA" {...a11yProps(0)} />
+          <Tab label="GALA" {...a11yProps(0)} component={"div"} />
           <Tab label="Superfight" {...a11yProps(1)} />
           <Tab label="OPEN" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
 
-      <TabPanel value={value} index={0} dir={theme.direction}>
+      <TabPanel value={value} index={0} component={"div"}>
         <Card>
           <CardContent>
             <Typography variant="h5" fontWeight={700} align="center">
@@ -99,17 +99,28 @@ export default function FullWidthTabs({ gala, superfight, open }) {
             >
               Fighters:
             </Typography>
-            <Grid container direction="row" spacing={2}>
-              {gala.fighters.map((fighter) => {
-                return (
-                  <Grid item xs={12} md={4} lg={3}>
-                    <GatsbyImage
-                      image={fighter.asset.gatsbyImageData}
-                      alt={fighter.asset.filename}
-                    />
-                  </Grid>
-                );
-              })}
+            <Grid
+              container
+              direction="row"
+              spacing={2}
+              sx={{
+                "& img": {
+                  borderRadius: `${theme.rounded} ${theme.rounded}`,
+                  WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
+                },
+              }}
+            >
+              {gala.fighters.length !== 0 &&
+                gala.fighters.map((fighter) => {
+                  return (
+                    <Grid item xs={12} md={4} lg={3}>
+                      <GatsbyImage
+                        image={fighter.asset.gatsbyImageData}
+                        alt={fighter.asset.filename}
+                      />
+                    </Grid>
+                  );
+                })}
             </Grid>
           </CardContent>
         </Card>
@@ -127,26 +138,41 @@ export default function FullWidthTabs({ gala, superfight, open }) {
                   : superfight.info._rawEn
               }
             />
-            <Typography
-              variant="h6"
-              fontWeight={700}
-              align="left"
-              sx={{ paddingBottom: 1 }}
-            >
-              Fights:
-            </Typography>
-            <Grid container direction="row" spacing={2}>
-              {superfight.matches.map((match) => {
-                return (
-                  <Grid item xs={12} md={4} lg={3}>
-                    <GatsbyImage
-                      image={match.asset.gatsbyImageData}
-                      alt={match.asset.filename}
-                    />
-                  </Grid>
-                );
-              })}
-            </Grid>
+            {superfight.matches.length !== 0 && (
+              <>
+                <Typography
+                  variant="h6"
+                  fontWeight={700}
+                  align="left"
+                  sx={{ paddingBottom: 1 }}
+                >
+                  Fights:
+                </Typography>
+                <Grid container direction="row" spacing={2}>
+                  {superfight.matches.map((match) => {
+                    return (
+                      <Grid
+                        item
+                        xs={12}
+                        md={4}
+                        lg={3}
+                        sx={{
+                          "& img": {
+                            borderRadius: `${theme.rounded} ${theme.rounded}`,
+                            WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
+                          },
+                        }}
+                      >
+                        <GatsbyImage
+                          image={match.asset.gatsbyImageData}
+                          alt={match.asset.filename}
+                        />
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </>
+            )}
           </CardContent>
         </Card>
       </TabPanel>

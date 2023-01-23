@@ -12,6 +12,7 @@ export const query = graphql`
       nodes {
         id
         title
+        subtitle
         link
         titleImage {
           asset {
@@ -19,7 +20,6 @@ export const query = graphql`
             gatsbyImageData(
               placeholder: BLURRED
               layout: CONSTRAINED
-
               height: 160
             )
           }
@@ -58,7 +58,13 @@ const SliderNews = () => {
                   component={"a"}
                   href={news.link}
                   target="_blank"
-                  sx={{ textDecoration: "none" }}
+                  sx={{
+                    textDecoration: "none",
+                    "& img": {
+                      borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                      WebkitBorderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                    },
+                  }}
                 >
                   <GatsbyImage
                     image={news.titleImage.asset.gatsbyImageData}
@@ -71,6 +77,9 @@ const SliderNews = () => {
                       backgroundColor: theme.palette.background.level1,
                     }}
                   >
+                    <Typography variant="subtitle1" color="text.primary">
+                      {news.subtitle}
+                    </Typography>
                     <Typography
                       variant="h6"
                       fontWeight={700}

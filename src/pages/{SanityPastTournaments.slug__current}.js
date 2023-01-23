@@ -16,6 +16,12 @@ export const query = graphql`
       }
       date(formatString: "DD.MM.YYYY")
       name
+      titleImage {
+        asset {
+          filename
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+        }
+      }
     }
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
