@@ -34,12 +34,7 @@ const NextTournament = ({ data }) => {
   return (
     <>
       <Container2>
-        <IconButton
-          aria-label="back"
-          component={Link}
-          to={"/tournaments"}
-          sx={{ marginBottom: 1 }}
-        >
+        <IconButton aria-label="back" component={Link} to={"/tournaments"}>
           <MdArrowBackIosNew />
         </IconButton>
         <Box
