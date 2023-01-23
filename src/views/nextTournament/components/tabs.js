@@ -83,119 +83,105 @@ export default function FullWidthTabs({ gala, superfight, open }) {
       </AppBar>
 
       <TabPanel value={value} index={0} component={"div"}>
-        <Card>
-          <CardContent>
-            <Typography variant="h5" fontWeight={700} align="center">
-              GALA
-            </Typography>
-            <PortableText
-              value={language === "cs" ? gala.info._rawCs : gala.info._rawEn}
-            />
+        <Typography variant="h5" fontWeight={700} align="center">
+          GALA
+        </Typography>
+        <PortableText
+          value={language === "cs" ? gala.info._rawCs : gala.info._rawEn}
+        />
+        <Typography
+          variant="h6"
+          fontWeight={700}
+          align="left"
+          sx={{ paddingBottom: 1 }}
+        >
+          Fighters:
+        </Typography>
+        <Grid
+          container
+          direction="row"
+          spacing={2}
+          sx={{
+            "& img": {
+              borderRadius: `${theme.rounded} ${theme.rounded}`,
+              WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
+            },
+          }}
+        >
+          {gala.fighters.length !== 0 &&
+            gala.fighters.map((fighter) => {
+              return (
+                <Grid item xs={12} md={4} lg={3}>
+                  <GatsbyImage
+                    image={fighter.asset.gatsbyImageData}
+                    alt={fighter.asset.filename}
+                  />
+                </Grid>
+              );
+            })}
+        </Grid>
+      </TabPanel>
+      <TabPanel value={value} index={1} dir={theme.direction}>
+        <Typography variant="h5" fontWeight={700} align="center">
+          Superfight
+        </Typography>
+        <PortableText
+          value={
+            language === "cs" ? superfight.info._rawCs : superfight.info._rawEn
+          }
+        />
+        {superfight.matches.length !== 0 && (
+          <>
             <Typography
               variant="h6"
               fontWeight={700}
               align="left"
               sx={{ paddingBottom: 1 }}
             >
-              Fighters:
+              Fights:
             </Typography>
-            <Grid
-              container
-              direction="row"
-              spacing={2}
-              sx={{
-                "& img": {
-                  borderRadius: `${theme.rounded} ${theme.rounded}`,
-                  WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
-                },
-              }}
-            >
-              {gala.fighters.length !== 0 &&
-                gala.fighters.map((fighter) => {
-                  return (
-                    <Grid item xs={12} md={4} lg={3}>
-                      <GatsbyImage
-                        image={fighter.asset.gatsbyImageData}
-                        alt={fighter.asset.filename}
-                      />
-                    </Grid>
-                  );
-                })}
+            <Grid container direction="row" spacing={2}>
+              {superfight.matches.map((match) => {
+                return (
+                  <Grid
+                    item
+                    xs={12}
+                    md={4}
+                    lg={3}
+                    sx={{
+                      "& img": {
+                        borderRadius: `${theme.rounded} ${theme.rounded}`,
+                        WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
+                      },
+                    }}
+                  >
+                    <GatsbyImage
+                      image={match.asset.gatsbyImageData}
+                      alt={match.asset.filename}
+                    />
+                  </Grid>
+                );
+              })}
             </Grid>
-          </CardContent>
-        </Card>
-      </TabPanel>
-      <TabPanel value={value} index={1} dir={theme.direction}>
-        <Card>
-          <CardContent>
-            <Typography variant="h5" fontWeight={700} align="center">
-              Superfight
-            </Typography>
-            <PortableText
-              value={
-                language === "cs"
-                  ? superfight.info._rawCs
-                  : superfight.info._rawEn
-              }
-            />
-            {superfight.matches.length !== 0 && (
-              <>
-                <Typography
-                  variant="h6"
-                  fontWeight={700}
-                  align="left"
-                  sx={{ paddingBottom: 1 }}
-                >
-                  Fights:
-                </Typography>
-                <Grid container direction="row" spacing={2}>
-                  {superfight.matches.map((match) => {
-                    return (
-                      <Grid
-                        item
-                        xs={12}
-                        md={4}
-                        lg={3}
-                        sx={{
-                          "& img": {
-                            borderRadius: `${theme.rounded} ${theme.rounded}`,
-                            WebkitBorderRadius: `${theme.rounded} ${theme.rounded}`,
-                          },
-                        }}
-                      >
-                        <GatsbyImage
-                          image={match.asset.gatsbyImageData}
-                          alt={match.asset.filename}
-                        />
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-              </>
-            )}
-          </CardContent>
-        </Card>
+          </>
+        )}
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
-        <Card>
-          <CardContent>
-            <Typography variant="h5" fontWeight={700} align="center">
-              OPEN
-            </Typography>
-            <PortableText
-              value={language === "cs" ? open.info._rawCs : open.info._rawEn}
-            />
-            <Button
-              variant="contained"
-              fullWidth
-              component={"a"}
-              href={open.registration}
-              target="_blank"
-            >
-              <Trans>Registrace</Trans>
-            </Button>
-          </CardContent>
-        </Card>
+        <Typography variant="h5" fontWeight={700} align="center">
+          OPEN
+        </Typography>
+        <PortableText
+          value={language === "cs" ? open.info._rawCs : open.info._rawEn}
+        />
+        <Button
+          variant="contained"
+          fullWidth
+          component={"a"}
+          href={open.registration}
+          target="_blank"
+        >
+          <Trans>Registrace</Trans>
+        </Button>
       </TabPanel>
     </Box>
   );
