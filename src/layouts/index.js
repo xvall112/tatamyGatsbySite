@@ -5,6 +5,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import getTheme from "../theme/index";
 import Main from "./Main";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "@fontsource/rambla";
+
 //context
 import { MenuProvider } from "../Context/MenuContext";
 export default function TopLayout(props) {

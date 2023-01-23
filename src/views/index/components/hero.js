@@ -100,7 +100,7 @@ const Hero = () => {
               <Grid container justifyContent="center">
                 <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}>
                   <Button
-                    variant="contained"
+                    variant="outlined"
                     color="secondary"
                     component={Link}
                     to={`/${car.link}`}

@@ -13,8 +13,8 @@ import { useTheme, styled } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
   "& img": {
-    borderRadius: `${theme.rounded}`,
-    WebkitBorderRadius: `${theme.rounded}`,
+    borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
+    WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
   },
 }));
 
@@ -33,14 +33,24 @@ const Index = ({ data }) => {
   return (
     <div>
       <Container2>
-        <IconButton aria-label="back" component={Link} to={"/tournaments"}>
+        <IconButton
+          aria-label="back"
+          component={Link}
+          to={"/tournaments"}
+          sx={{
+            position: "absolute",
+            top: "100px",
+            zIndex: 1000,
+            left: "20px",
+          }}
+        >
           <MdArrowBackIosNew />
         </IconButton>
         <Box
           style={{
             display: "grid",
-            borderRadius: ` ${theme.rounded}`,
-            WebkitBorderRadius: ` ${theme.rounded}`,
+            borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
+            WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
             overflow: "hidden",
           }}
         >
@@ -49,15 +59,15 @@ const Index = ({ data }) => {
               // By using the same grid area for both, they are stacked on top of each other
               gridArea: "1/1",
               position: "relative",
-              height: "30vh",
+              height: "40vh",
               alignItems: "center",
               justifyContent: "center",
               zIndex: 100,
               // This centers the other elements inside the hero component
               display: "grid",
               background: "rgba(0,0,0,0.6)",
-              borderRadius: ` ${theme.rounded}`,
-              WebkitBorderRadius: ` ${theme.rounded}`,
+              borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
+              WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
               overflow: "hidden",
             }}
           >
@@ -74,7 +84,7 @@ const Index = ({ data }) => {
             image={titleImage?.asset?.gatsbyImageData}
             alt={titleImage?.asset?.filename}
             style={{
-              height: "30vh",
+              height: "40vh",
               gridArea: "1/1",
             }}
           />

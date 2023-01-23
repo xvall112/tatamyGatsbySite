@@ -17,6 +17,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/rambla": "^4.5.11",
     "@mui/material": "^5.11.4",
     "@portabletext/react": "^2.0.0",
     "gatsby": "^5.4.1",
