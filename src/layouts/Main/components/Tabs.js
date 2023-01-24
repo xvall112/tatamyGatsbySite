@@ -3,8 +3,6 @@ import { Link, useI18next } from "gatsby-plugin-react-i18next";
 import { graphql, useStaticQuery } from "gatsby";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-//context
-import { MenuContext } from "../../../Context/MenuContext";
 
 export const query = graphql`
   query {
@@ -23,26 +21,20 @@ export const query = graphql`
 `;
 
 const Menu = () => {
-  const { language } = useI18next();
+  const { language, originalPath } = useI18next();
   const data = useStaticQuery(query);
   const { menu } = data.sanityOrganization;
-  const { pathname } = useContext(MenuContext);
-  const [value, setValue] = React.useState(pathname);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <>
       <Tabs
-        value={pathname}
-        onChange={handleChange}
+        value={originalPath}
         variant="scrollable"
         scrollButtons={false}
         aria-label="scrollable prevent tabs example"
       >
         {menu.map((item) => {
+          console.log(item.slug.current);
           return (
             <Tab
               key={item.slug.current}

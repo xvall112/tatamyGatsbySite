@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { graphql } from "gatsby";
-import { MenuContext } from "../Context/MenuContext";
 import Index from "../views/partners";
-const Partners = ({ location }) => {
-  const { setPathname } = useContext(MenuContext);
-  setPathname(location.pathname);
+import Seo from "../components/Seo";
+
+const Partners = () => {
   return (
     <div>
       <Index />
@@ -13,6 +12,8 @@ const Partners = ({ location }) => {
 };
 
 export default Partners;
+
+export const Head = () => <Seo title="Partners" />;
 
 export const query = graphql`
   query($language: String!) {

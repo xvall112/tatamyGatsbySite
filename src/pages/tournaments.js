@@ -1,18 +1,17 @@
-import React, { useContext } from "react";
-import { MenuContext } from "../Context/MenuContext";
+import React from "react";
+
 import { graphql } from "gatsby";
 //components
 import Index from "../views/tournaments";
+import Seo from "../components/Seo";
 
-const Tournaments = ({ location }) => {
-  const { setPathname } = useContext(MenuContext);
-  setPathname(location.pathname);
+const Tournaments = () => {
   return <Index />;
 };
 
 export default Tournaments;
 
-export const Head = () => <title>Tournaments</title>;
+export const Head = () => <Seo title="Tournaments" />;
 
 export const query = graphql`
   query($language: String!) {

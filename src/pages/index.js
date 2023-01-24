@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { graphql } from "gatsby";
-import { MenuContext } from "../Context/MenuContext";
+import Seo from "../components/Seo";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 //components
 import IndexView from "../views/index/index";
-import Tabs from "../layouts/Main/components/Tabs";
-const IndexPage = ({ location }) => {
-  const { setPathname } = useContext(MenuContext);
-  setPathname(location.pathname);
 
+const IndexPage = () => {
   return (
     <>
       <IndexView />
@@ -17,8 +15,6 @@ const IndexPage = ({ location }) => {
 };
 
 export default IndexPage;
-
-export const Head = () => <title>Home Page</title>;
 
 export const query = graphql`
   query($language: String!) {
@@ -31,5 +27,25 @@ export const query = graphql`
         }
       }
     }
+    organization: sanityOrganization {
+      aboutTatamy {
+        cs
+        en
+      }
+    }
   }
 `;
+
+export const Head = (props) => {
+  const { language } = useI18next();
+  return (
+    <Seo
+      title="BJJ a grapling"
+      description={
+        language === "cs"
+          ? props.data?.organization?.aboutTatamy?.cs
+          : props.data?.organization?.aboutTatamy?.en
+      }
+    />
+  );
+};

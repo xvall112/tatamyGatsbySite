@@ -1,6 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
+//components
+import Seo from "../components/Seo";
 import Index from "../views/nextTournament";
+
 export const query = graphql`
   query($slug__current: String!, $language: String!) {
     sanityNextTournaments(slug: { current: { eq: $slug__current } }) {
@@ -50,6 +53,7 @@ export const query = graphql`
       }
       titleImage {
         asset {
+          url
           filename
           gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
         }
@@ -75,3 +79,11 @@ const NextTournament = (props) => {
 };
 
 export default NextTournament;
+
+export const Head = (props) => (
+  <Seo
+    title={props.data.sanityNextTournaments.name}
+    description={props.data.sanityNextTournaments.description._rawCs}
+    image={props.data.sanityNextTournaments.titleImage.asset.url}
+  />
+);

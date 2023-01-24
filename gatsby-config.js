@@ -6,6 +6,15 @@ module.exports = {
   siteMetadata: {
     title: `Tatamy`,
     siteUrl: `http://localhost:8000`,
+
+    description: `BJJ a grapling`,
+    titleTemplate: " - Tatamy",
+    siteUrl: `https://www.tatamy.cz`,
+    author: `@Lukas Valta <valtalukas@sezanm.cz>`,
+    image: `./src/images/footerLogo.png`,
+    social: {
+      twitter: `Lukas`,
+    },
   },
   plugins: [
     {
@@ -37,7 +46,13 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "src/images/icon.png",
+        name: `Tatamy`,
+        short_name: `Tatamy`,
+        start_url: `/`,
+        background_color: `#1B1B1B`,
+        theme_color: `#1B1B1B`,
+        display: `fullscreen`,
+        icon: "src/images/footerLogo.png",
       },
     },
     {

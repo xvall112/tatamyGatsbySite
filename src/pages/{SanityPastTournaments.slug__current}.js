@@ -1,6 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
+//components
 import Index from "../views/passTournament";
+import Seo from "../components/Seo";
 export const query = graphql`
   query($slug__current: String!, $language: String!) {
     sanityPastTournaments(slug: { current: { eq: $slug__current } }) {
@@ -19,6 +21,7 @@ export const query = graphql`
       titleImage {
         asset {
           filename
+          url
           gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
         }
       }
@@ -44,3 +47,11 @@ const PastTournament = (props) => {
 };
 
 export default PastTournament;
+
+export const Head = (props) => (
+  <Seo
+    title={props.data.sanityPastTournaments.name}
+    description={props.data.sanityPastTournaments.description._rawCs}
+    image={props.data.sanityPastTournaments.titleImage.asset.url}
+  />
+);

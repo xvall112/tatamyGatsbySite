@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { graphql } from "gatsby";
-import { MenuContext } from "../Context/MenuContext";
-import Index from "../views/champions";
 
-const Champions = ({ location }) => {
-  const { setPathname } = useContext(MenuContext);
-  setPathname(location.pathname);
+//components
+import Index from "../views/champions";
+import Seo from "../components/Seo";
+const Champions = () => {
   return (
     <div>
       <Index />
@@ -14,6 +13,8 @@ const Champions = ({ location }) => {
 };
 
 export default Champions;
+
+export const Head = () => <Seo title="Champions" />;
 
 export const query = graphql`
   query($language: String!) {
