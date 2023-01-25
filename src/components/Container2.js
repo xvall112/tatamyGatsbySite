@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 
 const Container = ({ children, ...rest }) => (
-  <Box maxWidth={{ sm: 720, md: 2236 }} width={1} margin={"0 auto"} {...rest}>
+  <Box maxWidth={{ xs: 720, sm: 2236 }} width={1} margin={"0 auto"} {...rest}>
     {children}
   </Box>
 );

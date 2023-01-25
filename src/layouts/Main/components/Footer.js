@@ -64,8 +64,8 @@ const Footer = () => {
       </Container>
       <Container>
         <Grid container justifyContent="center" direction="row" spacing={4}>
-          <Grid item xs={6} lg={3}>
-            <Box p={{ xs: 0, lg: 2 }}>
+          <Grid item xs={6} md={3}>
+            <Box p={{ xs: 0, md: 2 }}>
               <StaticImage
                 src="../../../images/footerLogo.png"
                 alt="Foother logo Tatamy"
@@ -74,7 +74,7 @@ const Footer = () => {
               />
             </Box>
           </Grid>
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} md={3}>
             <Typography align="center">
               {language === "cs" ? aboutTatamy.cs : aboutTatamy.en}
             </Typography>
@@ -85,7 +85,7 @@ const Footer = () => {
             />
           </Grid>
 
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} md={3}>
             <Typography
               variant="h5"
               align="center"
@@ -118,7 +118,7 @@ const Footer = () => {
               })}
             </Box>
           </Grid>
-          <Grid item xs={12} lg={3}>
+          <Grid item xs={12} md={3}>
             <Typography
               variant="h5"
               align="center"

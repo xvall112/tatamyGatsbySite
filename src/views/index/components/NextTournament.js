@@ -55,7 +55,7 @@ const NextTournament = () => {
             <Grid
               item
               xs={12}
-              lg={6}
+              md={6}
               sx={{
                 "& img": {
                   borderRadius: `${theme.rounded} ${theme.rounded}`,
@@ -75,7 +75,7 @@ const NextTournament = () => {
               direction="row"
               alignItems="center"
               xs={12}
-              lg={6}
+              md={6}
               spacing={2}
             >
               <Grid item xs={12}>

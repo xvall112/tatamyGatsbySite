@@ -11,7 +11,7 @@ const Cards = ({ cards }) => {
   return (
     <Grid container direction="row" spacing={2}>
       {cards.nodes.map((card) => (
-        <Grid item xs={12} md={4} lg={4} key={card.slug.current}>
+        <Grid item xs={12} sm={6} md={4} lg={4} key={card.slug.current}>
           <Box
             sx={{
               borderRadius: theme.rounded,
