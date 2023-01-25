@@ -19,28 +19,26 @@ const Index = () => {
       >
         Organizace
       </Typography>
-      <Grid container alignItems="center" direction="column" spacing={2}>
-        <Grid item xs={12} md={6} lg={3}>
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="center"
+        direction="row"
+        spacing={2}
+      >
+        <Grid item xs={12} md={7}>
           <AboutTatamyModal />
         </Grid>
-        <Grid item xs={12} md={6} lg={3}>
+        <Grid item xs={12} md={7}>
           <DocumentsModal />
         </Grid>
-        <Grid item xs={12} md={6} lg={3}>
-          <Button
-            variant="outlined"
-            color="secondary"
-            sx={{ minWidth: { xs: 250, md: 400 } }}
-          >
+        <Grid item xs={12} md={7}>
+          <Button variant="outlined" color="secondary" fullWidth>
             Video
           </Button>
         </Grid>
-        <Grid item xs={12} md={6} lg={3}>
-          <Button
-            variant="outlined"
-            color="secondary"
-            sx={{ minWidth: { xs: 250, md: 400 } }}
-          >
+        <Grid item xs={12} md={7}>
+          <Button variant="outlined" color="secondary" fullWidth>
             Novinky
           </Button>
         </Grid>

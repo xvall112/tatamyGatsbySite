@@ -38,7 +38,7 @@ export default function AlertDialog() {
         variant="outlined"
         color="secondary"
         onClick={handleClickOpen}
-        sx={{ minWidth: { xs: 250, md: 400 } }}
+        fullWidth
       >
         <Trans>O TATAMY</Trans>
       </Button>
