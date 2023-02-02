@@ -1,4 +1,5 @@
 import React from "react";
+import { Trans, Link } from "gatsby-plugin-react-i18next";
 //components
 import AboutTatamyModal from "./components/aboutTatamyModal";
 import Container from "../../components/Container";
@@ -17,7 +18,7 @@ const Index = () => {
         fontWeight={700}
         sx={{ marginBottom: 3 }}
       >
-        Organizace
+        <Trans>Organizace</Trans>
       </Typography>
       <Grid
         container
@@ -33,13 +34,25 @@ const Index = () => {
           <DocumentsModal />
         </Grid>
         <Grid item xs={12} md={7}>
-          <Button variant="outlined" color="secondary" fullWidth>
-            Video
+          <Button
+            variant="outlined"
+            color="secondary"
+            fullWidth
+            component={Link}
+            to={"/news"}
+          >
+            <Trans>Video</Trans>
           </Button>
         </Grid>
         <Grid item xs={12} md={7}>
-          <Button variant="outlined" color="secondary" fullWidth>
-            Novinky
+          <Button
+            variant="outlined"
+            color="secondary"
+            fullWidth
+            component={Link}
+            to={"/news"}
+          >
+            <Trans>Novinky</Trans>
           </Button>
         </Grid>
       </Grid>

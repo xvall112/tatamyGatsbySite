@@ -83,7 +83,14 @@ export default function FullWidthTabs({ gala, superfight, open }) {
       </AppBar>
 
       <TabPanel value={value} index={0} component={"div"}>
-        <Typography variant="h5" fontWeight={700} align="center">
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          align="center"
+          style={{
+            textShadow: `${theme.palette.secondary.main} 1px 0 10px`,
+          }}
+        >
           GALA
         </Typography>
         <PortableText
@@ -122,7 +129,14 @@ export default function FullWidthTabs({ gala, superfight, open }) {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
-        <Typography variant="h5" fontWeight={700} align="center">
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          align="center"
+          style={{
+            textShadow: `${theme.palette.secondary.main} 1px 0 10px`,
+          }}
+        >
           Superfight
         </Typography>
         <PortableText
@@ -167,7 +181,14 @@ export default function FullWidthTabs({ gala, superfight, open }) {
         )}
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
-        <Typography variant="h5" fontWeight={700} align="center">
+        <Typography
+          variant="h3"
+          fontWeight={700}
+          align="center"
+          style={{
+            textShadow: `${theme.palette.secondary.main} 1px 0 10px`,
+          }}
+        >
           OPEN
         </Typography>
         <PortableText

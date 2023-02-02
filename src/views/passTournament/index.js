@@ -7,6 +7,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 //components
 import Container from "../../components/Container";
 import Container2 from "../../components/Container2";
+import Title from "../../components/Title";
 //materialUi
 import { Typography, Button, IconButton, Grid, Box } from "@mui/material";
 import { useTheme, styled } from "@mui/material/styles";
@@ -29,6 +30,8 @@ const Index = ({ data }) => {
     description,
     date,
     titleImage,
+    galleryLink,
+    gallery,
   } = data.sanityPastTournaments;
   return (
     <div>
@@ -72,7 +75,14 @@ const Index = ({ data }) => {
             }}
           >
             <Grid item xs={12}>
-              <Typography variant="h2" fontWeight={700} align="center">
+              <Typography
+                variant="h1"
+                fontWeight={700}
+                align="center"
+                style={{
+                  textShadow: `${theme.palette.secondary.main} 1px 0 10px`,
+                }}
+              >
                 {name}
               </Typography>
               <Typography variant="h5" align="center">
@@ -123,6 +133,7 @@ const Index = ({ data }) => {
       </Container>
       {video && (
         <Container>
+          <Title title={"Video"} />
           <Box display="flex" justifyContent="center">
             <ReactPlayer
               controls={true}
@@ -131,6 +142,42 @@ const Index = ({ data }) => {
               maxWidth="600px"
             />
           </Box>
+        </Container>
+      )}
+      {gallery && (
+        <Container>
+          <Title title={"Gallery"} />
+          <Grid container spacing={2}>
+            {gallery.map((image) => {
+              return (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={image.asset.filename}
+                >
+                  <GatsbyImage
+                    image={image.asset.gatsbyImageData}
+                    alt={image.asset.filename}
+                  />
+                </Grid>
+              );
+            })}
+            <Grid item xs={12}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                component={"a"}
+                href={galleryLink}
+                target="_blank"
+                fullWidth
+              >
+                <Trans>Celá fotogalerie zde</Trans>
+              </Button>
+            </Grid>
+          </Grid>
         </Container>
       )}
     </div>

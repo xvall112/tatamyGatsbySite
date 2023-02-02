@@ -7,6 +7,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import Container from "../../components/Container";
 import Container2 from "../../components/Container2";
 import Tabs from "./components/tabs";
+import HarmonogramModal from "./components/harmonogramModal";
 //materialUi
 import { Typography, Button, IconButton, Grid, Box } from "@mui/material";
 import { useTheme, styled } from "@mui/material/styles";
@@ -28,6 +29,7 @@ const NextTournament = ({ data }) => {
     open,
     superfight,
     titleImage,
+    harmonogram,
   } = data.sanityNextTournaments;
   const theme = useTheme();
   const { language } = useI18next();
@@ -73,7 +75,15 @@ const NextTournament = ({ data }) => {
             }}
           >
             <Grid item xs={12}>
-              <Typography variant="h2" fontWeight={700} align="center">
+              <Typography
+                variant="h1"
+                fontWeight={700}
+                align="center"
+                style={{
+                  webkitTextStroke: `2px ${color}`,
+                  textShadow: `${color} 1px 0 10px`,
+                }}
+              >
                 {name}
               </Typography>
               <Typography variant="h5" align="center">
@@ -94,9 +104,7 @@ const NextTournament = ({ data }) => {
       <Container>
         <Grid container direction="row" justifyContent="center" spacing={1}>
           <Grid item xs={12} md={7}>
-            <Button variant="outlined" color="secondary" fullWidth>
-              <Trans>Harmonogram</Trans>
-            </Button>
+            <HarmonogramModal harmonogram={harmonogram} />
           </Grid>
           <Grid item xs={12} md={7}>
             <Button

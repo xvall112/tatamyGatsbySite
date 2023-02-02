@@ -12,6 +12,7 @@ import Social from "../../../components/Social";
 export const query = graphql`
   query {
     sanityOrganization {
+      information
       email
       facebook
       instagram
@@ -54,11 +55,12 @@ const Footer = () => {
     menu,
     documents,
     aboutTatamy,
+    information,
   } = data.sanityOrganization;
   const { language } = useI18next();
 
   return (
-    <>
+    <Box sx={{ position: "relative", bottom: "0px" }}>
       <Container>
         <Divider />
       </Container>
@@ -109,7 +111,10 @@ const Footer = () => {
                       color="text.secondary"
                       component={Link}
                       to={item.slug.current}
-                      sx={{ textDecoration: "none" }}
+                      sx={{
+                        textDecoration: "none",
+                        "&:hover": { textDecoration: "underline" },
+                      }}
                     >
                       {language === "cs" ? item.title.cs : item.title.en}
                     </Typography>
@@ -142,7 +147,10 @@ const Footer = () => {
                       color="text.secondary"
                       component={"a"}
                       href={item.document.asset.url}
-                      sx={{ textDecoration: "none" }}
+                      sx={{
+                        textDecoration: "none",
+                        "&:hover": { textDecoration: "underline" },
+                      }}
                     >
                       {item.name}
                     </Typography>
@@ -159,6 +167,9 @@ const Footer = () => {
         flexDirection="column"
         sx={{ backgroundColor: "black" }}
       >
+        <Typography color="text.primary" variant="subtitle1" align="center">
+          {information}
+        </Typography>
         <Typography
           color="text.primary"
           variant="subtitle2"
@@ -181,7 +192,7 @@ const Footer = () => {
           TATAMY © Všechna práva vyhrazena 2023
         </Typography>
       </Box>
-    </>
+    </Box>
   );
 };
 

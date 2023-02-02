@@ -8,7 +8,7 @@ import { useTheme } from "@mui/material/styles";
 
 export const query = graphql`
   query {
-    allSanityNews(limit: 4) {
+    allSanityNews {
       nodes {
         id
         title

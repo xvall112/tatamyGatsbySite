@@ -5,8 +5,15 @@ import Seo from "../components/Seo";
 import Index from "../views/nextTournament";
 
 export const query = graphql`
-  query($slug__current: String!, $language: String!) {
+  query ($slug__current: String!, $language: String!) {
     sanityNextTournaments(slug: { current: { eq: $slug__current } }) {
+      harmonogram {
+        text {
+          cs
+          en
+        }
+        time
+      }
       slug {
         current
       }

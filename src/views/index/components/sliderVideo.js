@@ -7,7 +7,7 @@ import { Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 export const query = graphql`
   query {
-    allSanityVideos(limit: 4) {
+    allSanityVideos {
       nodes {
         id
         title

@@ -7,7 +7,7 @@ const Main = ({ children }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main style={{ minHeight: "50vh" }}>{children}</main>
       <Footer />
     </>
   );

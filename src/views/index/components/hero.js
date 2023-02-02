@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { Trans, Link } from "gatsby-plugin-react-i18next";
 //materialUi
-import { Button, Box, Grid } from "@mui/material";
+import { Button, Box, Grid, Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
@@ -78,13 +78,36 @@ const Hero = () => {
                     position: "relative",
                     height: "60vh",
                     alignItems: "center",
+                    justifyContent: "center",
                     zIndex: 100,
                     // This centers the other elements inside the hero component
                     display: "grid",
-                    background:
-                      "radial-gradient(circle, rgba(50,50,50,0.2) 0%, rgba(0,0,0,0.8998949921765581) 100%)",
+                    background: " rgba(0,0,0,0.6)",
                   }}
-                ></Box>
+                >
+                  <Box>
+                    <Typography
+                      align="center"
+                      variant="h1"
+                      fontWeight="700"
+                      style={{
+                        textShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                      }}
+                      sx={{ pb: 3 }}
+                    >
+                      {car.name}
+                    </Typography>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      component={Link}
+                      to={`/${car.link}`}
+                      fullWidth
+                    >
+                      <Trans>Více info</Trans>
+                    </Button>
+                  </Box>
+                </Box>
 
                 <StyledImg
                   image={car.image.asset.gatsbyImageData}
@@ -98,17 +121,7 @@ const Hero = () => {
                 />
               </Box>
               <Grid container justifyContent="center">
-                <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    component={Link}
-                    to={`/${car.link}`}
-                    fullWidth
-                  >
-                    <Trans>Více info</Trans>
-                  </Button>
-                </Grid>
+                <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}></Grid>
               </Grid>
             </SwiperSlide>
           );
