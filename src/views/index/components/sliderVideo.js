@@ -3,7 +3,13 @@ import { graphql, useStaticQuery } from "gatsby";
 import ReactPlayer from "react-player/youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
 //materialUi
-import { Typography, Box } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActionArea,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 export const query = graphql`
   query {
@@ -40,7 +46,30 @@ const SliderVideo = () => {
         {allSanityVideos.nodes.map((video) => {
           return (
             <SwiperSlide key={video.id}>
-              <Box
+              <Card sx={{ width: "100%" }}>
+                <CardActionArea>
+                  <CardMedia
+                    component={ReactPlayer}
+                    controls={true}
+                    light={true}
+                    url={video.linkYouTube}
+                    key={video.name}
+                    width="100%"
+                    height="160px"
+                  />
+                </CardActionArea>
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    fontWeight={700}
+                  >
+                    {video.title}
+                  </Typography>
+                </CardContent>
+              </Card>
+              {/*   <Box
                 sx={{
                   borderRadius: theme.rounded,
                   overflow: "hidden",
@@ -64,7 +93,7 @@ const SliderVideo = () => {
                     {video.title}
                   </Typography>
                 </Box>
-              </Box>
+              </Box> */}
             </SwiperSlide>
           );
         })}

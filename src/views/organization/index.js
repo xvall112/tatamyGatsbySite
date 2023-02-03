@@ -39,7 +39,7 @@ const Index = () => {
             color="secondary"
             fullWidth
             component={Link}
-            to={"/news"}
+            to={"/video"}
           >
             <Trans>Video</Trans>
           </Button>

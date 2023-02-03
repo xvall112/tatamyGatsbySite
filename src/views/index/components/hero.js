@@ -97,15 +97,6 @@ const Hero = () => {
                     >
                       {car.name}
                     </Typography>
-                    <Button
-                      variant="outlined"
-                      color="secondary"
-                      component={Link}
-                      to={`/${car.link}`}
-                      fullWidth
-                    >
-                      <Trans>Více info</Trans>
-                    </Button>
                   </Box>
                 </Box>
 
@@ -121,7 +112,17 @@ const Hero = () => {
                 />
               </Box>
               <Grid container justifyContent="center">
-                <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}></Grid>
+                <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    component={Link}
+                    to={`/${car.link}`}
+                    fullWidth
+                  >
+                    <Trans>Více info</Trans>
+                  </Button>
+                </Grid>
               </Grid>
             </SwiperSlide>
           );

@@ -1,7 +1,15 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 //materialUi
-import { Typography, Grid, Box } from "@mui/material";
+import {
+  Typography,
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  CardActions,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Social from "../../../components/Social";
 const CardChampions = ({
@@ -16,7 +24,51 @@ const CardChampions = ({
   const theme = useTheme();
   return (
     <Box>
-      <Grid container direction="row">
+      <Card
+        sx={{
+          width: "100%",
+          /* "& img": {
+            borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+            WebkitBorderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+          }, */
+        }}
+      >
+        <CardHeader
+          title={
+            <Typography variant="h6" fontWeight={700}>
+              -{weight}kg
+            </Typography>
+          }
+        />
+        <GatsbyImage
+          image={photo.gatsbyImageData}
+          alt={photo.filename}
+          style={{ width: "100%" }}
+        />
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            fontWeight={700}
+          >
+            {name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {gym}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Social
+            linkInstagram={instagram}
+            linkFacebook={facebook}
+            linkYouTube={youtube}
+            size={25}
+          />
+        </CardActions>
+      </Card>
+
+      {/*  <Grid container direction="row">
         <Grid item xs={12} md={4} lg={3}>
           <Typography variant="h6" fontWeight={700}>
             -{weight}kg
@@ -56,7 +108,7 @@ const CardChampions = ({
             />
           </Grid>
         </Grid>
-      </Grid>
+      </Grid> */}
     </Box>
   );
 };

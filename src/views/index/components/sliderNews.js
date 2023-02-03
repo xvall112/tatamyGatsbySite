@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 //materialUi
-import { Typography, Box } from "@mui/material";
+import { Typography, Card, CardContent, CardActionArea } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 export const query = graphql`
@@ -52,7 +52,40 @@ const SliderNews = () => {
         {allSanityNews.nodes.map((news) => {
           return (
             <SwiperSlide key={news.id}>
-              <Box
+              <Card sx={{ width: "100%" }}>
+                <CardActionArea
+                  component={"a"}
+                  href={news.link}
+                  target="_blank"
+                  sx={{
+                    "& img": {
+                      borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                      WebkitBorderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                    },
+                  }}
+                >
+                  <GatsbyImage
+                    image={news.titleImage.asset.gatsbyImageData}
+                    alt={news.titleImage.asset.filename}
+                    style={{ width: "100%" }}
+                  />
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                      {news.subtitle}
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      fontWeight={700}
+                    >
+                      {news.title}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+
+              {/*  <Box
                 sx={{
                   borderRadius: theme.rounded,
                   overflow: "hidden",
@@ -93,7 +126,7 @@ const SliderNews = () => {
                     </Typography>
                   </Box>
                 </Box>
-              </Box>
+              </Box> */}
             </SwiperSlide>
           );
         })}
