@@ -1,6 +1,10 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const isProd = process.env.NODE_ENV === "production";
 const previewEnabled =
   (process.env.GATSBY_IS_PREVIEW || "false").toLowerCase() === "true";
