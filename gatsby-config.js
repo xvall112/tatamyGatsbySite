@@ -1,6 +1,10 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+const isProd = process.env.NODE_ENV === "production";
+const previewEnabled =
+  (process.env.GATSBY_IS_PREVIEW || "false").toLowerCase() === "true";
+
 const { languages, defaultLanguage } = require("./languages");
 module.exports = {
   siteMetadata: {
@@ -20,9 +24,11 @@ module.exports = {
     {
       resolve: "gatsby-source-sanity",
       options: {
-        projectId: "0lxa8ekm",
-        dataset: "production",
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
         token: process.env.SANITY_TOKEN,
+        watchMode: !isProd,
+        overlayDrafts: !isProd || previewEnabled,
       },
     },
     `gatsby-plugin-layout`,
