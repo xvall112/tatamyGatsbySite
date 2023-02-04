@@ -1,6 +1,5 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { PortableText } from "@portabletext/react";
 import ReactPlayer from "react-player/youtube";
 import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -8,6 +7,7 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import Container from "../../components/Container";
 import Container2 from "../../components/Container2";
 import Title from "../../components/Title";
+import MyPortableText from "../../components/PortableText";
 //materialUi
 import { Typography, Button, IconButton, Grid, Box } from "@mui/material";
 import { useTheme, styled } from "@mui/material/styles";
@@ -127,7 +127,7 @@ const Index = ({ data }) => {
         </Grid>
       </Container>
       <Container>
-        <PortableText
+        <MyPortableText
           value={language === "cs" ? description._rawCs : description._rawEn}
         />
       </Container>

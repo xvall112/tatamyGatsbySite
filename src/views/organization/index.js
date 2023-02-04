@@ -33,7 +33,7 @@ const Index = () => {
         <Grid item xs={12} md={7}>
           <DocumentsModal />
         </Grid>
-        <Grid item xs={12} md={7}>
+        {/*  <Grid item xs={12} md={7}>
           <Button
             variant="outlined"
             color="secondary"
@@ -54,7 +54,7 @@ const Index = () => {
           >
             <Trans>Novinky</Trans>
           </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Container>
   );
