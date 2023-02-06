@@ -2,18 +2,27 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+
 //materialUi
-import { Typography, Card, CardContent, CardActionArea } from "@mui/material";
+import {
+  Typography,
+  Card,
+  CardContent,
+  CardActionArea,
+  Box,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 export const query = graphql`
   query {
-    allSanityNews {
+    allSanityNews(sort: { date: DESC }) {
       nodes {
         id
         title
         subtitle
         link
+        date(formatString: "DD.MM.YYYY")
         titleImage {
           asset {
             filename
@@ -34,9 +43,20 @@ const SliderNews = () => {
   const data = useStaticQuery(query);
   const { allSanityNews } = data;
   return (
-    <>
+    <Box
+      sx={{
+        "& .swiper-button-next": {
+          color: theme.palette.primary.main,
+        },
+        "& .swiper-button-prev": {
+          color: theme.palette.primary.main,
+        },
+      }}
+    >
       <Swiper
-        spaceBetween={30}
+        navigation={true}
+        modules={[Navigation]}
+        spaceBetween={20}
         slidesPerView={1.2}
         breakpoints={{
           600: {
@@ -80,6 +100,9 @@ const SliderNews = () => {
                       fontWeight={700}
                     >
                       {news.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {news.date}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -131,7 +154,7 @@ const SliderNews = () => {
           );
         })}
       </Swiper>
-    </>
+    </Box>
   );
 };
 

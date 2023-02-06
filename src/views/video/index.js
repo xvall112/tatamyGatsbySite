@@ -17,11 +17,13 @@ import { CardActionArea } from "@mui/material";
 
 export const query = graphql`
   query {
-    video: allSanityVideos {
+    video: allSanityVideos(sort: { date: DESC }) {
       nodes {
         id
         title
+        subtitle
         linkYouTube
+        date(formatString: "DD.MM.YYYY")
       }
     }
   }
@@ -50,6 +52,9 @@ const Index = () => {
                       height="160px"
                     />
                     <CardContent>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.subtitle}
+                      </Typography>
                       <Typography
                         gutterBottom
                         variant="h5"
@@ -57,6 +62,9 @@ const Index = () => {
                         fontWeight={700}
                       >
                         {item.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.date}
                       </Typography>
                     </CardContent>
                   </CardActionArea>

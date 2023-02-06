@@ -2,6 +2,7 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import ReactPlayer from "react-player/youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 //materialUi
 import {
   Typography,
@@ -9,15 +10,18 @@ import {
   CardMedia,
   CardContent,
   CardActionArea,
+  Box,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 export const query = graphql`
   query {
-    allSanityVideos {
+    allSanityVideos(sort: { date: DESC }) {
       nodes {
         id
         title
+        subtitle
         linkYouTube
+        date(formatString: "DD.MM.YYYY")
       }
     }
   }
@@ -28,10 +32,21 @@ const SliderVideo = () => {
   const data = useStaticQuery(query);
   const { allSanityVideos } = data;
   return (
-    <>
+    <Box
+      sx={{
+        "& .swiper-button-next": {
+          color: theme.palette.primary.main,
+        },
+        "& .swiper-button-prev": {
+          color: theme.palette.primary.main,
+        },
+      }}
+    >
       <Swiper
-        spaceBetween={30}
+        spaceBetween={20}
         slidesPerView={1.2}
+        navigation={true}
+        modules={[Navigation]}
         breakpoints={{
           600: {
             slidesPerView: 3.2,
@@ -59,6 +74,9 @@ const SliderVideo = () => {
                   />
                 </CardActionArea>
                 <CardContent>
+                  <Typography variant="body2" color="text.secondary">
+                    {video.subtitle}
+                  </Typography>
                   <Typography
                     gutterBottom
                     variant="h5"
@@ -66,6 +84,9 @@ const SliderVideo = () => {
                     fontWeight={700}
                   >
                     {video.title}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {video.date}
                   </Typography>
                 </CardContent>
               </Card>
@@ -98,7 +119,7 @@ const SliderVideo = () => {
           );
         })}
       </Swiper>
-    </>
+    </Box>
   );
 };
 

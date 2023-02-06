@@ -81,13 +81,13 @@ const NextTournament = () => {
               <Grid item xs={12}>
                 <Typography
                   align="center"
-                  variant="h3"
+                  variant="h2"
                   fontWeight={700}
                   sx={{ color: `${nextTournament.color}` }}
                 >
                   {nextTournament.name}
                 </Typography>
-                <Typography align="center" variant="h6">
+                <Typography align="center" variant="h5">
                   {nextTournament.date}
                 </Typography>
               </Grid>

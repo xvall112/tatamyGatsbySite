@@ -9,8 +9,17 @@ import Container2 from "../../components/Container2";
 import Title from "../../components/Title";
 import MyPortableText from "../../components/PortableText";
 //materialUi
-import { Typography, Button, IconButton, Grid, Box } from "@mui/material";
+import {
+  Typography,
+  Button,
+  IconButton,
+  Grid,
+  Box,
+  useMediaQuery,
+} from "@mui/material";
 import { useTheme, styled } from "@mui/material/styles";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
   "& img": {
@@ -21,6 +30,9 @@ const StyledImg = styled(GatsbyImage)(({ theme }) => ({
 
 const Index = ({ data }) => {
   const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
+    defaultMatches: true,
+  });
   const { language } = useI18next();
   const {
     name,
@@ -147,37 +159,28 @@ const Index = ({ data }) => {
       {gallery && (
         <Container>
           <Title title={"Gallery"} />
-          <Grid container spacing={2}>
+          <ImageList variant="masonry" cols={isMd ? 3 : 1} gap={8}>
             {gallery.map((image) => {
               return (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  key={image.asset.filename}
-                >
+                <ImageListItem key={image.asset.filename}>
                   <GatsbyImage
                     image={image.asset.gatsbyImageData}
                     alt={image.asset.filename}
                   />
-                </Grid>
+                </ImageListItem>
               );
             })}
-            <Grid item xs={12}>
-              <Button
-                variant="outlined"
-                color="secondary"
-                component={"a"}
-                href={galleryLink}
-                target="_blank"
-                fullWidth
-              >
-                <Trans>Celá fotogalerie zde</Trans>
-              </Button>
-            </Grid>
-          </Grid>
+          </ImageList>
+          <Button
+            variant="outlined"
+            color="secondary"
+            component={"a"}
+            href={galleryLink}
+            target="_blank"
+            fullWidth
+          >
+            <Trans>Celá fotogalerie zde</Trans>
+          </Button>
         </Container>
       )}
     </div>

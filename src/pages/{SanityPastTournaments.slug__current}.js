@@ -9,7 +9,7 @@ export const query = graphql`
       galleryLink
       gallery {
         asset {
-          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 600)
           filename
         }
       }

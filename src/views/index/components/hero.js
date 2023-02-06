@@ -24,7 +24,11 @@ export const query = graphql`
         image {
           asset {
             filename
-            gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: CONSTRAINED
+              height: 500
+            )
           }
         }
       }

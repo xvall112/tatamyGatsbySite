@@ -16,9 +16,10 @@ import { CardActionArea } from "@mui/material";
 
 export const query = graphql`
   query {
-    news: allSanityNews {
+    news: allSanityNews(sort: { date: DESC }) {
       nodes {
         id
+        date(formatString: "DD.MM.YYYY")
         title
         subtitle
         link
@@ -77,6 +78,9 @@ const Index = () => {
                         fontWeight={700}
                       >
                         {item.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.date}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
