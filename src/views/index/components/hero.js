@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { Trans, Link } from "gatsby-plugin-react-i18next";
+import Countdown from "react-countdown";
 //materialUi
 import { Button, Box, Grid, Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
@@ -21,6 +22,7 @@ export const query = graphql`
       carousel {
         name
         link
+        date(formatString: "YYYY-MM-DDTHH:mm:ss")
         image {
           asset {
             filename
@@ -35,6 +37,28 @@ export const query = graphql`
     }
   }
 `;
+
+//countdown
+
+const Completionist = () => <span>You are good to go!</span>;
+
+// Renderer callback with condition
+const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  if (completed) {
+    // Render a completed state
+    return <Completionist />;
+  } else {
+    // Render a countdown
+    return (
+      <span>
+        <Trans i18nKey="dní" count={days}>
+          {{ days }}
+        </Trans>{" "}
+        {hours}h {minutes}m {seconds}s
+      </span>
+    );
+  }
+};
 
 const Hero = () => {
   const data = useStaticQuery(query);
@@ -100,6 +124,24 @@ const Hero = () => {
                       sx={{ pb: 3 }}
                     >
                       {car.name}
+                    </Typography>
+                    <Typography
+                      align="center"
+                      variant="h3"
+                      fontWeight="700"
+                      style={{
+                        textShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                        boxShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                      }}
+                      sx={{
+                        p: 1,
+                        borderColor: theme.palette.secondary.main,
+                        borderStyle: "solid",
+                        borderWeight: "1px",
+                        borderRadius: theme.rounded,
+                      }}
+                    >
+                      <Countdown date={car.date} renderer={renderer} />
                     </Typography>
                   </Box>
                 </Box>

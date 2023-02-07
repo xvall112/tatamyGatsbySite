@@ -3,6 +3,8 @@ import { graphql, useStaticQuery } from "gatsby";
 import ReactPlayer from "react-player/youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+//components
+import ModalVideo from "./modalVideo";
 //materialUi
 import {
   Typography,
@@ -61,14 +63,19 @@ const SliderVideo = () => {
         {allSanityVideos.nodes.map((video) => {
           return (
             <SwiperSlide key={video.id}>
-              <Card sx={{ width: "100%" }}>
+              <ModalVideo
+                url={video.linkYouTube}
+                title={video.title}
+                subtitle={video.subtitle}
+                date={video.date}
+              />
+              {/*  <Card sx={{ width: "100%" }}>
                 <CardActionArea>
                   <CardMedia
                     component={ReactPlayer}
                     controls={true}
                     light={true}
                     url={video.linkYouTube}
-                    key={video.name}
                     width="100%"
                     height="160px"
                   />
@@ -89,7 +96,7 @@ const SliderVideo = () => {
                     {video.date}
                   </Typography>
                 </CardContent>
-              </Card>
+              </Card> */}
               {/*   <Box
                 sx={{
                   borderRadius: theme.rounded,

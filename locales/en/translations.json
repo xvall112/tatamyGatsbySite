@@ -20,5 +20,7 @@
   "Výsledky OPEN": "OPEN results",
   "Stát se partnerem": "Be a partner",
   "Celá fotogalerie zde": "All Gallery",
-  "Organizace": "Organization"
+  "Organizace": "Organization",
+  "dní_other": "{{count}}days",
+  "dní_one": "{{count}}day"
 }

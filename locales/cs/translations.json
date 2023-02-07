@@ -20,5 +20,10 @@
   "Výsledky OPEN": "Výsledky OPEN",
   "Stát se partnerem": "Stát se partnerem",
   "Celá fotogalerie zde": "Celá fotogalerie zde",
-  "Organizace": "Organizace"
+  "Organizace": "Organizace",
+  "dní_other": "{{count}}dní",
+  "dní_one": "{{count}}den",
+  "dní_two": "{{count}}dny",
+  "dní_three": "{{count}}dny",
+  "dní_four": "{{count}}dny"
 }

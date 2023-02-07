@@ -2,6 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Trans, Link, useI18next } from "gatsby-plugin-react-i18next";
+import Countdown from "react-countdown";
 //components
 import Title from "../../../components/Title";
 //materialUi
@@ -14,6 +15,7 @@ export const query = graphql`
       nextTournament {
         name
         date(formatString: "DD.MM.YYYY")
+
         shortDescription {
           en
           cs
@@ -41,11 +43,29 @@ export const query = graphql`
   }
 `;
 
+const Completionist = () => <span>You are good to go!</span>;
+
+// Renderer callback with condition
+const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  if (completed) {
+    // Render a completed state
+    return <Completionist />;
+  } else {
+    // Render a countdown
+    return (
+      <span>
+        {days}dní {hours}hodin {minutes}minut {seconds}sekund
+      </span>
+    );
+  }
+};
+
 const NextTournament = () => {
   const theme = useTheme();
   const data = useStaticQuery(query);
   const { nextTournament } = data.sanityHomePage;
   const { language } = useI18next();
+
   return (
     <>
       {nextTournament && (
