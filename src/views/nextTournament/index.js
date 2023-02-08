@@ -9,7 +9,15 @@ import Tabs from "./components/tabs";
 import HarmonogramModal from "./components/harmonogramModal";
 import MyPortableText from "../../components/PortableText";
 //materialUi
-import { Typography, Button, IconButton, Grid, Box } from "@mui/material";
+import {
+  Typography,
+  Button,
+  IconButton,
+  Grid,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+} from "@mui/material";
 import { useTheme, styled } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
@@ -36,7 +44,60 @@ const NextTournament = ({ data }) => {
   return (
     <>
       <Container2>
-        <IconButton
+        <ImageList
+          cols={1}
+          sx={{
+            width: "100%",
+            height: "auto",
+            margin: "0px",
+          }}
+        >
+          <ImageListItem>
+            <StyledImg
+              image={titleImage?.asset?.gatsbyImageData}
+              alt={titleImage?.asset?.filename}
+              style={{ maxHeight: "50vh", width: "100%", objectFit: "contain" }}
+            />
+            <ImageListItemBar
+              actionIcon={
+                <IconButton
+                  aria-label="back"
+                  component={Link}
+                  to={"/tournaments"}
+                  sx={{
+                    position: "absolute",
+                    top: "10px",
+                    zIndex: 1000,
+                    left: "20px",
+                  }}
+                >
+                  <MdArrowBackIosNew />
+                </IconButton>
+              }
+              sx={{ height: "100%" }}
+              position={"center"}
+              title={
+                <Typography
+                  variant="h1"
+                  fontWeight={700}
+                  align="center"
+                  style={{
+                    webkitTextStroke: `2px ${color}`,
+                    textShadow: `${color} 1px 0 10px`,
+                  }}
+                >
+                  {name}
+                </Typography>
+              }
+              subtitle={
+                <Typography variant="h5" align="center">
+                  {date}
+                </Typography>
+              }
+            />
+          </ImageListItem>
+        </ImageList>
+        {/* <IconButton
           aria-label="back"
           component={Link}
           to={"/tournaments"}
@@ -99,7 +160,7 @@ const NextTournament = ({ data }) => {
               gridArea: "1/1",
             }}
           />
-        </Box>
+        </Box> */}
       </Container2>
       <Container>
         <Grid container direction="row" justifyContent="center" spacing={1}>

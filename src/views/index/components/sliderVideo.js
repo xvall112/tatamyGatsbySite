@@ -1,19 +1,11 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import ReactPlayer from "react-player/youtube";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 //components
 import ModalVideo from "./modalVideo";
 //materialUi
-import {
-  Typography,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActionArea,
-  Box,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 export const query = graphql`
   query {

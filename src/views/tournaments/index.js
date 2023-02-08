@@ -21,6 +21,7 @@ export const query = graphql`
               layout: CONSTRAINED
               placeholder: BLURRED
               aspectRatio: 1
+              height: 500
             )
             filename
           }
@@ -40,6 +41,7 @@ export const query = graphql`
               layout: CONSTRAINED
               placeholder: BLURRED
               aspectRatio: 1
+              height: 500
             )
             filename
           }

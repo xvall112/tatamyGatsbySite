@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { Trans } from "gatsby-plugin-react-i18next";
 //materialUi
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 //components
 import Title from "../../components/Title";
 import Container from "../../components/Container";
@@ -23,6 +23,7 @@ export const query = graphql`
               placeholder: BLURRED
               layout: CONSTRAINED
               aspectRatio: 0.8
+              height: 500
             )
             filename
           }

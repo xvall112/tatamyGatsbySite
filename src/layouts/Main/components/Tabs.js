@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
 import { graphql, useStaticQuery } from "gatsby";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import { Tabs, Tab, Box } from "@mui/material";
 
 export const query = graphql`
   query {
@@ -30,11 +29,16 @@ const Menu = () => {
       <Tabs
         value={originalPath}
         variant="scrollable"
-        scrollButtons={false}
-        aria-label="scrollable prevent tabs example"
+        scrollButtons
+        allowScrollButtonsMobile
+        aria-label="scrollable navigation"
+        sx={{
+          "& .MuiTabScrollButton-root": {
+            /* backgroundColor: "rgba(0,0,0,.5)" */ width: "auto",
+          },
+        }}
       >
         {menu.map((item) => {
-          console.log(item.slug.current);
           return (
             <Tab
               key={item.slug.current}

@@ -6,6 +6,9 @@ import { Navigation, Pagination } from "swiper";
 import { Trans, Link } from "gatsby-plugin-react-i18next";
 import Countdown from "react-countdown";
 //materialUi
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
 import { Button, Box, Grid, Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
@@ -26,11 +29,7 @@ export const query = graphql`
         image {
           asset {
             filename
-            gatsbyImageData(
-              placeholder: BLURRED
-              layout: CONSTRAINED
-              height: 500
-            )
+            gatsbyImageData(placeholder: BLURRED, height: 500)
           }
         }
       }
@@ -89,7 +88,59 @@ const Hero = () => {
         {data?.sanityHomePage?.carousel?.map((car) => {
           return (
             <SwiperSlide key={car.name}>
-              <Box
+              <ImageList
+                cols={1}
+                sx={{
+                  width: "100%",
+
+                  margin: "0px",
+                }}
+              >
+                <ImageListItem>
+                  <StyledImg
+                    image={car.image.asset.gatsbyImageData}
+                    alt={car.image.asset.filename}
+                    style={{
+                      minHeight: "30vh",
+                      width: "100%",
+                      gridArea: "1/1",
+                    }}
+                  />
+                  <ImageListItemBar
+                    sx={{ height: "100%" }}
+                    position={"center"}
+                    title={
+                      <Typography
+                        align="center"
+                        variant="h1"
+                        fontWeight="700"
+                        style={{
+                          textShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                        }}
+                        sx={{ pb: 3 }}
+                      >
+                        {car.name}
+                      </Typography>
+                    }
+                    subtitle={
+                      car.date && (
+                        <Typography
+                          align="center"
+                          variant="h3"
+                          fontWeight="700"
+                          style={{
+                            textShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                            boxShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                          }}
+                        >
+                          <Countdown date={car.date} renderer={renderer} />
+                        </Typography>
+                      )
+                    }
+                  />
+                </ImageListItem>
+              </ImageList>
+              {/*   <Box
                 style={{
                   display: "grid",
                   borderRadius: ` 0 0 ${theme.rounded} ${theme.rounded}`,
@@ -125,24 +176,26 @@ const Hero = () => {
                     >
                       {car.name}
                     </Typography>
-                    <Typography
-                      align="center"
-                      variant="h3"
-                      fontWeight="700"
-                      style={{
-                        textShadow: `${theme.palette.primary.main} 1px 0 10px`,
-                        boxShadow: `${theme.palette.primary.main} 1px 0 10px`,
-                      }}
-                      sx={{
-                        p: 1,
-                        borderColor: theme.palette.secondary.main,
-                        borderStyle: "solid",
-                        borderWeight: "1px",
-                        borderRadius: theme.rounded,
-                      }}
-                    >
-                      <Countdown date={car.date} renderer={renderer} />
-                    </Typography>
+                    {car.date && (
+                      <Typography
+                        align="center"
+                        variant="h3"
+                        fontWeight="700"
+                        style={{
+                          textShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                          boxShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                        }}
+                        sx={{
+                          p: 1,
+                          borderColor: theme.palette.secondary.main,
+                          borderStyle: "solid",
+                          borderWeight: "1px",
+                          borderRadius: theme.rounded,
+                        }}
+                      >
+                        <Countdown date={car.date} renderer={renderer} />
+                      </Typography>
+                    )}
                   </Box>
                 </Box>
 
@@ -151,12 +204,11 @@ const Hero = () => {
                   alt={car.image.asset.filename}
                   style={{
                     height: "60vh",
-                    objectFit: "fill",
-                    margin: "auto 0",
+                    width: "100%",
                     gridArea: "1/1",
                   }}
                 />
-              </Box>
+              </Box> */}
               <Grid container justifyContent="center">
                 <Grid item xs={12} lg={4} sx={{ mt: 1, px: 2 }}>
                   <Button

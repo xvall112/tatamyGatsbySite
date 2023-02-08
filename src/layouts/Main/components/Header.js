@@ -10,6 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 //components
 import Tabs from "./Tabs";
+import Container2 from "../../../components/Container2";
 
 const Header = () => {
   const { originalPath, languages, language } = useI18next();
@@ -61,7 +62,7 @@ const Header = () => {
         </Container>
       </Box>
       <AppBar position="sticky">
-        <Container maxWidth="xl">
+        <Container2>
           <Grid
             container
             direction="row"
@@ -70,7 +71,7 @@ const Header = () => {
           >
             <Tabs />
           </Grid>
-        </Container>
+        </Container2>
       </AppBar>
     </>
   );
