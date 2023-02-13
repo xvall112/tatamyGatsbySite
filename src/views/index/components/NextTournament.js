@@ -26,7 +26,7 @@ export const query = graphql`
         open {
           registration
         }
-        titleImage {
+        mobileTitleImage {
           asset {
             gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
             altText
@@ -62,8 +62,8 @@ const NextTournament = () => {
               }}
             >
               <GatsbyImage
-                image={nextTournament?.titleImage?.asset?.gatsbyImageData}
-                alt={nextTournament.titleImage.asset?.filename}
+                image={nextTournament?.mobileTitleImage?.asset?.gatsbyImageData}
+                alt={nextTournament.mobileTitleImage.asset?.filename}
                 style={{ borderRadius: theme.rounded }}
               />
             </Grid>

@@ -1,19 +1,12 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
-import { Trans } from "gatsby-plugin-react-i18next";
-import ReactPlayer from "react-player/youtube";
+
 //components
 import Container from "../../components/Container";
 import Title from "../../components/Title";
-
+import ModalVideo from "../index/components/modalVideo";
 //materialUI
 import { Grid } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
 
 export const query = graphql`
   query {
@@ -40,35 +33,12 @@ const Index = () => {
           {video.nodes.map((item) => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
-                <Card sx={{ width: "100%" }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component={ReactPlayer}
-                      controls={true}
-                      light={true}
-                      url={item.linkYouTube}
-                      key={item.id}
-                      width="100%"
-                      height="160px"
-                    />
-                    <CardContent>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.subtitle}
-                      </Typography>
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        component="div"
-                        fontWeight={700}
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.date}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
+                <ModalVideo
+                  url={item.linkYouTube}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  date={item.date}
+                />
               </Grid>
             );
           })}

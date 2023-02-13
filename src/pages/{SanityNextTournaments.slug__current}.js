@@ -5,7 +5,7 @@ import Seo from "../components/Seo";
 import Index from "../views/nextTournament";
 
 export const query = graphql`
-  query ($slug__current: String!, $language: String!) {
+  query($slug__current: String!, $language: String!) {
     sanityNextTournaments(slug: { current: { eq: $slug__current } }) {
       harmonogram {
         text {
@@ -62,7 +62,18 @@ export const query = graphql`
         asset {
           url
           filename
-          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          gatsbyImageData(
+            layout: CONSTRAINED
+            placeholder: BLURRED
+            width: 2000
+          )
+        }
+      }
+      mobileTitleImage {
+        asset {
+          url
+          filename
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 500)
         }
       }
     }

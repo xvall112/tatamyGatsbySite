@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import Index from "../views/passTournament";
 import Seo from "../components/Seo";
 export const query = graphql`
-  query ($slug__current: String!, $language: String!) {
+  query($slug__current: String!, $language: String!) {
     sanityPastTournaments(slug: { current: { eq: $slug__current } }) {
       galleryLink
       gallery {
@@ -27,9 +27,20 @@ export const query = graphql`
       name
       titleImage {
         asset {
-          filename
           url
-          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          filename
+          gatsbyImageData(
+            layout: CONSTRAINED
+            placeholder: BLURRED
+            width: 2000
+          )
+        }
+      }
+      mobileTitleImage {
+        asset {
+          url
+          filename
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 500)
         }
       }
     }

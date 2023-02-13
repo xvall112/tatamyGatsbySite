@@ -15,7 +15,7 @@ export const query = graphql`
           current
         }
         name
-        titleImage {
+        mobileTitleImage {
           asset {
             gatsbyImageData(
               layout: CONSTRAINED
@@ -35,7 +35,7 @@ export const query = graphql`
         slug {
           current
         }
-        titleImage {
+        mobileTitleImage {
           asset {
             gatsbyImageData(
               layout: CONSTRAINED

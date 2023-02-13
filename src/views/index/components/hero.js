@@ -1,5 +1,5 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -14,6 +14,8 @@ import { styled, useTheme } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
   "& img": {
+    [theme.breakpoints.down("md")]: { minHeight: "50vh" },
+    maxHeight: "60vh",
     borderRadius: ` 0 0 ${theme.rounded} ${theme.rounded}`,
     WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
   },
@@ -29,7 +31,22 @@ export const query = graphql`
         image {
           asset {
             filename
-            gatsbyImageData(placeholder: BLURRED, height: 500)
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: CONSTRAINED
+              width: 2000
+            )
+          }
+        }
+        imageMobile {
+          asset {
+            filename
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: CONSTRAINED
+              width: 500
+              aspectRatio: 1
+            )
           }
         }
       }
@@ -86,24 +103,30 @@ const Hero = () => {
         modules={[Navigation, Pagination]}
       >
         {data?.sanityHomePage?.carousel?.map((car) => {
+          const images = withArtDirection(
+            getImage(car.image.asset.gatsbyImageData),
+            [
+              {
+                media: "(max-width: 1024px)",
+                image: getImage(car.imageMobile.asset.gatsbyImageData),
+              },
+            ]
+          );
           return (
             <SwiperSlide key={car.name}>
               <ImageList
                 cols={1}
                 sx={{
                   width: "100%",
-
                   margin: "0px",
                 }}
               >
                 <ImageListItem>
                   <StyledImg
-                    image={car.image.asset.gatsbyImageData}
+                    image={images}
                     alt={car.image.asset.filename}
                     style={{
-                      minHeight: "30vh",
-                      width: "100%",
-                      gridArea: "1/1",
+                      height: "100%",
                     }}
                   />
                   <ImageListItemBar

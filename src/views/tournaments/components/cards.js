@@ -30,8 +30,8 @@ const Cards = ({ cards }) => {
               }}
             >
               <GatsbyImage
-                image={card.titleImage.asset.gatsbyImageData}
-                alt={card.titleImage.asset.filename}
+                image={card.mobileTitleImage.asset.gatsbyImageData}
+                alt={card.mobileTitleImage.asset.filename}
                 style={{ height: "100%" }}
               />
               <CardContent>

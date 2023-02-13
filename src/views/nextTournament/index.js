@@ -1,5 +1,5 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image";
 import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next";
 import { MdArrowBackIosNew } from "react-icons/md";
 //components
@@ -22,6 +22,8 @@ import { useTheme, styled } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
   "& img": {
+    maxHeight: "60vh",
+    [theme.breakpoints.down("md")]: { minHeight: "50vh" },
     borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
     WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
   },
@@ -37,10 +39,17 @@ const NextTournament = ({ data }) => {
     open,
     superfight,
     titleImage,
+    mobileTitleImage,
     harmonogram,
   } = data.sanityNextTournaments;
   const theme = useTheme();
   const { language } = useI18next();
+  const images = withArtDirection(getImage(titleImage.asset.gatsbyImageData), [
+    {
+      media: "(max-width: 1024px)",
+      image: getImage(mobileTitleImage.asset.gatsbyImageData),
+    },
+  ]);
   return (
     <>
       <Container2>
@@ -54,9 +63,9 @@ const NextTournament = ({ data }) => {
         >
           <ImageListItem>
             <StyledImg
-              image={titleImage?.asset?.gatsbyImageData}
+              image={images}
               alt={titleImage?.asset?.filename}
-              style={{ maxHeight: "50vh", width: "100%", objectFit: "contain" }}
+              style={{ width: "100%" }}
             />
             <ImageListItemBar
               actionIcon={

@@ -1,5 +1,5 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image";
 import ReactPlayer from "react-player/youtube";
 import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -24,6 +24,8 @@ import { useTheme, styled } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
   "& img": {
+    maxHeight: "60vh",
+    [theme.breakpoints.down("md")]: { minHeight: "50vh" },
     borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
     WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
   },
@@ -45,7 +47,14 @@ const Index = ({ data }) => {
     titleImage,
     galleryLink,
     gallery,
+    mobileTitleImage,
   } = data.sanityPastTournaments;
+  const images = withArtDirection(getImage(titleImage.asset.gatsbyImageData), [
+    {
+      media: "(max-width: 1024px)",
+      image: getImage(mobileTitleImage.asset.gatsbyImageData),
+    },
+  ]);
   return (
     <div>
       <Container2>
@@ -59,9 +68,9 @@ const Index = ({ data }) => {
         >
           <ImageListItem>
             <StyledImg
-              image={titleImage?.asset?.gatsbyImageData}
+              image={images}
               alt={titleImage?.asset?.filename}
-              style={{ maxHeight: "50vh", width: "100%", objectFit: "contain" }}
+              style={{ width: "100%", objectFit: "contain" }}
             />
             <ImageListItemBar
               actionIcon={
