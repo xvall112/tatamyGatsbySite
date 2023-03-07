@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import { PortableText } from "@portabletext/react";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 //materialUi
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
@@ -54,10 +52,6 @@ export default function FullWidthTabs({ gala, superfight, open }) {
   const { language } = useI18next();
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleChangeIndex = (index) => {
-    setValue(index);
   };
 
   return (

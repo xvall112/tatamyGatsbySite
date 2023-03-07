@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Trans, useI18next } from "gatsby-plugin-react-i18next";
+import { Trans } from "gatsby-plugin-react-i18next";
 import Dialog from "@mui/material/Dialog";
 import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
@@ -25,7 +25,6 @@ export const query = graphql`
 
 export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
-  const { language } = useI18next();
   const data = useStaticQuery(query);
   const { documents } = data.sanityOrganization;
   const handleClickOpen = () => {

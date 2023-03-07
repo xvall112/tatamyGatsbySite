@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link, useI18next, Trans } from "gatsby-plugin-react-i18next";
 //materialUi
-import { useTheme } from "@mui/material/styles";
 import { Grid, Box, Typography, Divider } from "@mui/material";
 //component
 import Container from "../../../components/Container";
@@ -44,7 +43,6 @@ export const query = graphql`
 `;
 
 const Footer = () => {
-  const theme = useTheme();
   const data = useStaticQuery(query);
   const {
     email,

@@ -2,7 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Trans } from "gatsby-plugin-react-i18next";
 //materialUI
-import { Button } from "@mui/material";
+
 //components
 import PartnersByGroup from "./components/partnersByGroup";
 import Title from "../../components/Title";
@@ -84,11 +84,11 @@ const Index = () => {
 
   return (
     <>
-      <Container>
+      {/*  <Container>
         <Button variant="outlined" color="secondary" fullWidth>
           <Trans>Stát se partnerem</Trans>
-        </Button>
-      </Container>
+        </Button> 
+      </Container>*/}
       {generalPartners?.nodes?.length !== 0 && (
         <Container>
           <Title title={<Trans>Generální partneři</Trans>} />

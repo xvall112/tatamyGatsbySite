@@ -1,15 +1,13 @@
 import React from "react";
-import { Trans, Link } from "gatsby-plugin-react-i18next";
+import { Trans } from "gatsby-plugin-react-i18next";
 //components
 import AboutTatamyModal from "./components/aboutTatamyModal";
 import Container from "../../components/Container";
 import DocumentsModal from "./components/documentsModal";
 //materialUi
-import { Typography, Grid, Button } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Typography, Grid } from "@mui/material";
 
 const Index = () => {
-  const theme = useTheme();
   return (
     <Container>
       <Typography

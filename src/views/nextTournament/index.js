@@ -18,7 +18,7 @@ import {
   ImageListItem,
   ImageListItemBar,
 } from "@mui/material";
-import { useTheme, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 const StyledImg = styled(GatsbyImage)(({ theme }) => ({
   "& img": {
@@ -42,7 +42,7 @@ const NextTournament = ({ data }) => {
     mobileTitleImage,
     harmonogram,
   } = data.sanityNextTournaments;
-  const theme = useTheme();
+
   const { language } = useI18next();
   const images = withArtDirection(getImage(titleImage.asset.gatsbyImageData), [
     {

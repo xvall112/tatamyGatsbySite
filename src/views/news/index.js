@@ -41,7 +41,7 @@ export const query = graphql`
 const Index = () => {
   const theme = useTheme();
   const data = useStaticQuery(query);
-  const { news, video } = data;
+  const { news } = data;
   return (
     <>
       <Container>

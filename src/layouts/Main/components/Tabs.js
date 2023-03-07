@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
 import { graphql, useStaticQuery } from "gatsby";
-import { Tabs, Tab, Box } from "@mui/material";
+import { Tabs, Tab } from "@mui/material";
 
 export const query = graphql`
   query {

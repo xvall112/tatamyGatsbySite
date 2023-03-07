@@ -3,14 +3,13 @@ import { GatsbyImage } from "gatsby-plugin-image";
 //materialUi
 import {
   Typography,
-  Avatar,
   Box,
   Card,
   CardContent,
   CardHeader,
   CardActions,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+
 import Social from "../../../components/Social";
 const CardChampions = ({
   name,
@@ -21,7 +20,6 @@ const CardChampions = ({
   facebook,
   youtube,
 }) => {
-  const theme = useTheme();
   return (
     <Box>
       <Card
