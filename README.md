@@ -1,54 +1,26 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Tatamy - Website for a BJJ tournament organizing company
+This project is a multilanguage website built for Tatamy, a company that organizes Brazilian Jiu-Jitsu (BJJ) tournaments. It features a modern and responsive user interface that provides information about the company, its services, and the tournaments it organizes.
 
-## 🚀 Quick start
+Features
+Tatamy offers the following features:
 
-1.  **Create a Gatsby site.**
+- A homepage with the most interesting information.
+- A tournaments page with details about past and upcoming tournaments.
+- A champions page about champions in weight categories of Tatamy organisation
+- A video page with video of past tournaments and competitors from youtube.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Technology
+Tatamy is built using the following technologies:
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+- Gatsby
+- GraphQL
+- MaterialUi
+- Headless CMS (Sanity)
+- i18next
 
-2.  **Start developing.**
+## License
+Tatamy is available under the MIT license. For more information, see the LICENSE file.
 
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+## Contact
+If you have any questions or comments about the project, please contact us at valtalukas@seznam.cz.
+https://tatamybjj.cz
