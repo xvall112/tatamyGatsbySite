@@ -1,4 +1,4 @@
-# Tatamy - Website for a BJJ tournament organizing company
+# [Tatamy - Website for a BJJ tournament organizing company](https://tatamybjj.cz)
 This project is a multilanguage website built for Tatamy, a company that organizes Brazilian Jiu-Jitsu (BJJ) tournaments. It features a modern and responsive user interface that provides information about the company, its services, and the tournaments it organizes.
 
 Features
