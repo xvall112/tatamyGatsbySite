@@ -5,6 +5,7 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 
 //components
 import IndexView from "../views/index/index";
+import CookieConsent from "../components/CookieConsent";
 
 const IndexPage = () => {
   return (
@@ -17,7 +18,7 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
@@ -39,13 +40,16 @@ export const query = graphql`
 export const Head = (props) => {
   const { language } = useI18next();
   return (
-    <Seo
-      title="BJJ a grapling"
-      description={
-        language === "cs"
-          ? props.data?.organization?.aboutTatamy?.cs
-          : props.data?.organization?.aboutTatamy?.en
-      }
-    />
+    <>
+      <CookieConsent />
+      <Seo
+        title="BJJ a grapling"
+        description={
+          language === "cs"
+            ? props.data?.organization?.aboutTatamy?.cs
+            : props.data?.organization?.aboutTatamy?.en
+        }
+      />
+    </>
   );
 };
