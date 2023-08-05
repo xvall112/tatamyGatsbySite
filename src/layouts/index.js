@@ -4,7 +4,6 @@ import Paper from "@mui/material/Paper";
 import CssBaseline from "@mui/material/CssBaseline";
 import getTheme from "../theme/index";
 import Main from "./Main";
-import CookieConsent from "../components/CookieConsent";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -29,7 +28,6 @@ export default function TopLayout(props) {
           <Main>
             <Paper elevation={0}>{props.children}</Paper>
           </Main>
-          <CookieConsent />
         </MenuProvider>
       </ThemeProvider>
     </React.Fragment>
