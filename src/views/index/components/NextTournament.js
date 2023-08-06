@@ -90,7 +90,7 @@ const NextTournament = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography align="center">
+                <Typography align="center" variant="h6" fontWeight={700}>
                   {language === "cs"
                     ? nextTournament.shortDescription.cs
                     : nextTournament.shortDescription.en}

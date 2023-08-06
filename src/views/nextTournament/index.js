@@ -17,6 +17,7 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Container as MuiContainer,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -191,11 +192,11 @@ const NextTournament = ({ data }) => {
           </Grid>
         </Grid>
       </Container>
-      <Container>
+      <MuiContainer maxWidth="sm">
         <MyPortableText
           value={language === "cs" ? description._rawCs : description._rawEn}
         />
-      </Container>
+      </MuiContainer>
       <Container>
         <Tabs gala={gala} superfight={superfight} open={open} />
       </Container>

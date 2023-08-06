@@ -19,6 +19,7 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Container as MuiContainer,
 } from "@mui/material";
 import { useTheme, styled } from "@mui/material/styles";
 
@@ -200,51 +201,54 @@ const Index = ({ data }) => {
           </Grid>
         </Grid>
       </Container>
-      <Container>
-        <MyPortableText
-          value={language === "cs" ? description._rawCs : description._rawEn}
-        />
-      </Container>
-      {video && (
+      <MuiContainer maxWidth="md">
         <Container>
-          <Title title={"Video"} />
-          <Box display="flex" justifyContent="center">
-            <ReactPlayer
-              controls={true}
-              light={true}
-              url={video}
-              maxWidth="600px"
-            />
-          </Box>
+          <MyPortableText
+            value={language === "cs" ? description._rawCs : description._rawEn}
+          />
         </Container>
-      )}
-      {gallery && (
-        <Container>
-          <Title title={"Gallery"} />
-          <ImageList variant="masonry" cols={isMd ? 3 : 1} gap={8}>
-            {gallery.map((image) => {
-              return (
-                <ImageListItem key={image.asset.filename}>
-                  <GatsbyImage
-                    image={image.asset.gatsbyImageData}
-                    alt={image.asset.filename}
-                  />
-                </ImageListItem>
-              );
-            })}
-          </ImageList>
-          <Button
-            variant="outlined"
-            color="secondary"
-            component={"a"}
-            href={galleryLink}
-            target="_blank"
-            fullWidth
-          >
-            <Trans>Celá fotogalerie zde</Trans>
-          </Button>
-        </Container>
-      )}
+
+        {video && (
+          <Container>
+            <Title title={"Video"} />
+            <Box display="flex" justifyContent="center">
+              <ReactPlayer
+                controls={true}
+                light={true}
+                url={video}
+                maxWidth="600px"
+              />
+            </Box>
+          </Container>
+        )}
+        {gallery && (
+          <Container>
+            <Title title={"Gallery"} />
+            <ImageList variant="masonry" cols={isMd ? 3 : 1} gap={8}>
+              {gallery.map((image) => {
+                return (
+                  <ImageListItem key={image.asset.filename}>
+                    <GatsbyImage
+                      image={image.asset.gatsbyImageData}
+                      alt={image.asset.filename}
+                    />
+                  </ImageListItem>
+                );
+              })}
+            </ImageList>
+            <Button
+              variant="outlined"
+              color="secondary"
+              component={"a"}
+              href={galleryLink}
+              target="_blank"
+              fullWidth
+            >
+              <Trans>Celá fotogalerie zde</Trans>
+            </Button>
+          </Container>
+        )}
+      </MuiContainer>
     </div>
   );
 };
