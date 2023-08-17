@@ -14,7 +14,7 @@ exports.onClientEntry = () => {
   // Load Google Analytics script
   if (process.env.NODE_ENV === "production") {
     const script = document.createElement("script");
-    script.src = `https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID`;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=G-ER4QD0EM9D`;
     document.head.appendChild(script);
 
     script.onload = () => {
