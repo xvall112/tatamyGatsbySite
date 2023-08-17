@@ -41,7 +41,7 @@ export const Head = (props) => {
   const { language } = useI18next();
   return (
     <>
-      <CookieConsent />
+      {/* <CookieConsent /> */}
       <Seo
         title="BJJ a grapling"
         description={

@@ -30,7 +30,7 @@ module.exports = {
       options: {
         // You can add multiple tracking ids and a page view event will be fired for all of them.
         trackingIds: [
-          process.env.GOOGLE_ANALYTICS_ID, // Google Analytics / GA
+          "G-ER4QD0EM9D", // Google Analytics / GA
         ],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds

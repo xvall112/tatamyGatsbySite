@@ -124,7 +124,7 @@ const SEO = ({ description, title, image, article, children }) => {
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-ER4QD0EM9D"
       ></script>
-
+      <script src="../utils/analyticsScript.js"></script>
       {children}
     </>
   );
