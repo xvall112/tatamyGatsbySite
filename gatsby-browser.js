@@ -10,20 +10,20 @@ export const wrapRootElement = ({ element }) => {
 };
  */
 
-exports.onClientEntry = () => {
-  // Load Google Analytics script
-  if (process.env.NODE_ENV === "production") {
-    const script = document.createElement("script");
-    script.src = `https://www.googletagmanager.com/gtag/js?id=G-ER4QD0EM9D`;
-    document.head.appendChild(script);
+// exports.onClientEntry = () => {
+//   // Load Google Analytics script
+//   if (process.env.NODE_ENV === "production") {
+//     const script = document.createElement("script");
+//     script.src = `https://www.googletagmanager.com/gtag/js?id=G-ER4QD0EM9D`;
+//     document.head.appendChild(script);
 
-    script.onload = () => {
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-ER4QD0EM9D");
-    };
-  }
-};
+//     script.onload = () => {
+//       window.dataLayer = window.dataLayer || [];
+//       function gtag() {
+//         window.dataLayer.push(arguments);
+//       }
+//       gtag("js", new Date());
+//       gtag("config", "G-ER4QD0EM9D");
+//     };
+//   }
+// };
