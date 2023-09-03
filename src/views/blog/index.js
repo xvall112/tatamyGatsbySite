@@ -142,7 +142,7 @@ const Blog = ({ data }) => {
         <MyPortableText value={language === "cs" ? text._rawCs : text._rawEn} />
       </MuiContainer>
       {video && (
-        <Container>
+        <Container maxWidth="md">
           <Title title={"Video"} />
           <Box display="flex" justifyContent="center">
             <ReactPlayer

@@ -17,7 +17,6 @@ function Images({ value }) {
       <img
         src={urlFor(asset)}
         alt={asset.alt || "image"}
-        loading="lazy"
         style={{ width: "100%" }}
       />
       <Typography>{asset.description}</Typography>
