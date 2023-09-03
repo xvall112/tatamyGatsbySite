@@ -1,5 +1,6 @@
 import React from "react";
 import { InstagramEmbed } from "react-social-media-embed";
+import { Box } from '@mui/material'
 
 const InstagramBlockComponents = ({ value }) => {
   const { url } = value;
@@ -7,9 +8,9 @@ const InstagramBlockComponents = ({ value }) => {
     return <p>Missing URL for Instagram post</p>;
   }
   return (
-    <div style={{ display: "flex", justifyContent: "center", marginY: "10px" }}>
+    <Box display="flex" justifyContent="center" my={5}>
       <InstagramEmbed url={url} width={400} />
-    </div>
+    </Box>
   );
 };
 

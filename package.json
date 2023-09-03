@@ -21,6 +21,7 @@
     "@mui/lab": "^5.0.0-alpha.118",
     "@mui/material": "^5.11.4",
     "@portabletext/react": "^2.0.0",
+    "@sanity/image-url": "^1.0.2",
     "gatsby": "^5.4.1",
     "gatsby-plugin-emotion": "^8.4.0",
     "gatsby-plugin-google-gtag": "^5.11.0",

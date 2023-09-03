@@ -1,5 +1,4 @@
 import React from "react";
-
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby-plugin-react-i18next";
 //materialUi
