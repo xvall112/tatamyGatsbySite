@@ -169,20 +169,22 @@ const Blog = ({ data }) => {
               );
             })}
           </ImageList>
-          <Button
-            variant="outlined"
-            color="secondary"
-            component={"a"}
-            href={galleryLink}
-            target="_blank"
-            fullWidth
-          >
-            <Trans>Celá fotogalerie zde</Trans>
-          </Button>
+          {galleryLink && (
+            <Button
+              variant="outlined"
+              color="secondary"
+              component={"a"}
+              href={galleryLink}
+              target="_blank"
+              fullWidth
+            >
+              <Trans>Celá fotogalerie zde</Trans>
+            </Button>
+          )}
         </Container>
       )}
       <MuiContainer>
-        <Box my={6}>
+        <Box my={3}>
           <Divider />
         </Box>
         <SimilarStories />

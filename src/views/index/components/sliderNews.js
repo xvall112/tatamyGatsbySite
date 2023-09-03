@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import { Link } from "gatsby-plugin-react-i18next";
 
 //materialUi
 import {
@@ -16,7 +17,7 @@ import { useTheme } from "@mui/material/styles";
 
 export const query = graphql`
   query {
-    allSanityNews(sort: { date: DESC }) {
+    news: allSanityNews(sort: { date: DESC }) {
       nodes {
         id
         title
@@ -35,13 +36,64 @@ export const query = graphql`
         }
       }
     }
+    blog: allSanityBlog(sort: { date: DESC }) {
+      nodes {
+        author
+        id
+        date(formatString: "DD.MM.YYYY")
+        title {
+          cs
+          en
+        }
+        subtitle {
+          cs
+          en
+        }
+        slug {
+          current
+        }
+        titleImage {
+          asset {
+            filename
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: CONSTRAINED
+              height: 160
+            )
+          }
+        }
+      }
+    }
   }
 `;
 
 const SliderNews = () => {
   const theme = useTheme();
   const data = useStaticQuery(query);
-  const { allSanityNews } = data;
+  const { news, blog } = data;
+  const newsArray = news.nodes.map((item) => ({ ...item, tag: "article" }));
+  const blogArray = blog.nodes.map((item) => ({
+    ...item,
+    title: item.title.cs,
+    subtitle: item.author,
+    link: item.slug.current,
+    tag: "blog",
+  }));
+  const merged = [...blogArray, ...newsArray];
+  const sortMerge = merged.sort((a, b) => {
+    const [dayA, monthA, yearA] = a.date
+      .split("-")
+      .map((num) => parseInt(num, 10));
+    const [dayB, monthB, yearB] = b.date
+      .split("-")
+      .map((num) => parseInt(num, 10));
+
+    const dateA = new Date(yearA, monthA - 1, dayA);
+    const dateB = new Date(yearB, monthB - 1, dayB);
+
+    return dateB - dateA;
+  });
+
   return (
     <Box
       sx={{
@@ -69,13 +121,14 @@ const SliderNews = () => {
           },
         }}
       >
-        {allSanityNews.nodes.map((news) => {
+        {sortMerge.map((news) => {
           return (
             <SwiperSlide key={news.id}>
               <Card sx={{ width: "100%" }}>
                 <CardActionArea
-                  component={"a"}
+                  component={news.tag === "blog" ? Link : "a"}
                   href={news.link}
+                  to={news.link}
                   target="_blank"
                   sx={{
                     "& img": {

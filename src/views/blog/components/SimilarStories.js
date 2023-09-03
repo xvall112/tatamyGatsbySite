@@ -10,6 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/stack";
 import Avatar from "@mui/material/Avatar";
 import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next";
 import { MdSubtitles } from "react-icons/md";
@@ -58,12 +59,21 @@ const SimilarStories = () => {
         flexDirection={{ xs: "column", sm: "row" }}
         marginBottom={4}
       >
-        <Box>
-          <Typography fontWeight={700} variant={"h6"} gutterBottom>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          width={1}
+        >
+          <Typography
+            component="div"
+            fontWeight={700}
+            variant={"h6"}
+            gutterBottom
+          >
             Další články
           </Typography>
-        </Box>
-        <Box display="flex" marginTop={{ xs: 2, md: 0 }}>
+
           <Button
             component={Link}
             variant="outlined"
@@ -73,7 +83,7 @@ const SimilarStories = () => {
           >
             Zobrazit vše
           </Button>
-        </Box>
+        </Stack>
       </Box>
       <Grid container spacing={4}>
         {data.allSanityBlog.nodes.map((item, i) => (

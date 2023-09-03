@@ -111,103 +111,41 @@ const Index = ({ data }) => {
             />
           </ImageListItem>
         </ImageList>
-        {/* <IconButton
-          aria-label="back"
-          component={Link}
-          to={"/tournaments"}
-          sx={{
-            position: "absolute",
-            top: "100px",
-            zIndex: 1000,
-            left: "20px",
-          }}
-        >
-          <MdArrowBackIosNew />
-        </IconButton>
-        <Box
-          style={{
-            display: "grid",
-            borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
-            WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
-            overflow: "hidden",
-          }}
-        >
-          <Box
-            style={{
-              // By using the same grid area for both, they are stacked on top of each other
-              gridArea: "1/1",
-              position: "relative",
-              height: "40vh",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 100,
-              // This centers the other elements inside the hero component
-              display: "grid",
-              background: "rgba(0,0,0,0.6)",
-              borderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
-              WebkitBorderRadius: `0 0 ${theme.rounded} ${theme.rounded}`,
-              overflow: "hidden",
-            }}
-          >
-            <Grid item xs={12}>
-              <Typography
-                variant="h1"
-                fontWeight={700}
-                align="center"
-                style={{
-                  textShadow: `${theme.palette.secondary.main} 1px 0 10px`,
-                }}
-              >
-                {name}
-              </Typography>
-              <Typography variant="h5" align="center">
-                {date}
-              </Typography>
-            </Grid>
-          </Box>
-          <StyledImg
-            image={titleImage?.asset?.gatsbyImageData}
-            alt={titleImage?.asset?.filename}
-            style={{
-              height: "40vh",
-              gridArea: "1/1",
-            }}
-          />
-        </Box> */}
       </Container2>
       <Container>
         <Grid container direction="row" justifyContent="center" spacing={1}>
-          <Grid item xs={12} md={7}>
-            <Button
-              variant="contained"
-              component={"a"}
-              href={galaResults}
-              target="_blank"
-              fullWidth
-            >
-              <Trans>Výsledky GALA</Trans>
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={7}>
-            <Button
-              variant="contained"
-              component={"a"}
-              href={openResults}
-              target="_blank"
-              fullWidth
-            >
-              <Trans>Výsledky OPEN</Trans>
-            </Button>
-          </Grid>
+          {galaResults && (
+            <Grid item xs={12} md={7}>
+              <Button
+                variant="contained"
+                component={"a"}
+                href={galaResults}
+                target="_blank"
+                fullWidth
+              >
+                <Trans>Výsledky GALA</Trans>
+              </Button>
+            </Grid>
+          )}
+          {openResults && (
+            <Grid item xs={12} md={7}>
+              <Button
+                variant="contained"
+                component={"a"}
+                href={openResults}
+                target="_blank"
+                fullWidth
+              >
+                <Trans>Výsledky OPEN</Trans>
+              </Button>
+            </Grid>
+          )}
         </Grid>
       </Container>
       <MuiContainer maxWidth="md">
-        <Container>
-          <MyPortableText
-            value={language === "cs" ? description._rawCs : description._rawEn}
-          />
-        </Container>
-
+        <MyPortableText
+          value={language === "cs" ? description._rawCs : description._rawEn}
+        />
         {video && (
           <Container>
             <Title title={"Video"} />
@@ -221,7 +159,7 @@ const Index = ({ data }) => {
             </Box>
           </Container>
         )}
-        {gallery && (
+        {gallery.asset && (
           <Container>
             <Title title={"Gallery"} />
             <ImageList variant="masonry" cols={isMd ? 3 : 1} gap={8}>
@@ -236,16 +174,18 @@ const Index = ({ data }) => {
                 );
               })}
             </ImageList>
-            <Button
-              variant="outlined"
-              color="secondary"
-              component={"a"}
-              href={galleryLink}
-              target="_blank"
-              fullWidth
-            >
-              <Trans>Celá fotogalerie zde</Trans>
-            </Button>
+            {galleryLink && (
+              <Button
+                variant="outlined"
+                color="secondary"
+                component={"a"}
+                href={galleryLink}
+                target="_blank"
+                fullWidth
+              >
+                <Trans>Celá fotogalerie zde</Trans>
+              </Button>
+            )}
           </Container>
         )}
       </MuiContainer>
