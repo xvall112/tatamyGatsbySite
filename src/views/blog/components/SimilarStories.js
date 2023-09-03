@@ -10,7 +10,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/stack";
+import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
 import { Trans, useI18next, Link } from "gatsby-plugin-react-i18next";
 import { MdSubtitles } from "react-icons/md";
