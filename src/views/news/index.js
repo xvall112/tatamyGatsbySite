@@ -75,7 +75,7 @@ const Index = () => {
   return (
     <>
       <Container>
-        <Title title={<Trans>Blog</Trans>} />
+        {blog.nodes.length !== 0 && <Title title={<Trans>Blog</Trans>} />}
         <Grid container direction="row" spacing={2}>
           {blog.nodes.map((item) => {
             return (
