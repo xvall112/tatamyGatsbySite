@@ -13,10 +13,8 @@ const { languages, defaultLanguage } = require("./languages");
 module.exports = {
   siteMetadata: {
     title: `Tatamy`,
-    siteUrl: `www.tatamy.cz`,
-
     description: `TATAMY Grapplingové a BJJ turnaje`,
-    titleTemplate: " - Tatamy",
+    titleTemplate: " - TATAMY",
     siteUrl: `https://www.tatamy.cz`,
     author: `@Lukas Valta <valtalukas@sezanm.cz>`,
     image: `./src/images/footerLogo.png`,

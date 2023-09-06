@@ -43,7 +43,7 @@ export const Head = (props) => {
     <>
       {/* <CookieConsent /> */}
       <Seo
-        title="BJJ a grapling"
+        title="TATAMY Grapplingové a BJJ turnaje"
         description={
           language === "cs"
             ? props.data?.organization?.aboutTatamy?.cs
