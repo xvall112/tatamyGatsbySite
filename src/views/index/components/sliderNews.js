@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,6 +23,7 @@ export const query = graphql`
         title
         subtitle
         link
+        dateCompare: date
         date(formatString: "DD.MM.YYYY")
         titleImage {
           asset {
@@ -40,6 +41,7 @@ export const query = graphql`
       nodes {
         author
         id
+        dateCompare: date
         date(formatString: "DD.MM.YYYY")
         title {
           cs
@@ -68,6 +70,7 @@ export const query = graphql`
 `;
 
 const SliderNews = () => {
+  const [sortedNews, setSortedNews] = useState(null);
   const theme = useTheme();
   const data = useStaticQuery(query);
   const { news, blog } = data;
@@ -80,19 +83,23 @@ const SliderNews = () => {
     tag: "blog",
   }));
   const merged = [...blogArray, ...newsArray];
-  const sortMerge = merged.sort((a, b) => {
-    const [dayA, monthA, yearA] = a.date
-      .split("-")
-      .map((num) => parseInt(num, 10));
-    const [dayB, monthB, yearB] = b.date
-      .split("-")
-      .map((num) => parseInt(num, 10));
+  console.log("merged news", merged);
 
-    const dateA = new Date(yearA, monthA - 1, dayA);
-    const dateB = new Date(yearB, monthB - 1, dayB);
-
-    return dateB - dateA;
-  });
+  useEffect(() => {
+    function sortArrayByDate() {
+      return merged.sort((a, b) => {
+        if (a.dateCompare < b.dateCompare) {
+          return 1;
+        } else if (a.dateCompare > b.dateCompare) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    console.log(sortArrayByDate());
+    setSortedNews(sortArrayByDate());
+  }, []);
 
   return (
     <Box
@@ -121,7 +128,7 @@ const SliderNews = () => {
           },
         }}
       >
-        {sortMerge.map((news) => {
+        {sortedNews?.map((news) => {
           return (
             <SwiperSlide key={news.id}>
               <Card sx={{ width: "100%" }}>

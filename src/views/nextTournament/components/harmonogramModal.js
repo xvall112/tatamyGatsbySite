@@ -1,4 +1,5 @@
 import * as React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -11,7 +12,9 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import TimelineOppositeContent, {
+  timelineOppositeContentClasses,
+} from "@mui/lab/TimelineOppositeContent";
 
 export default function AlertDialog({ harmonogram }) {
   const [open, setOpen] = React.useState(false);
@@ -44,28 +47,40 @@ export default function AlertDialog({ harmonogram }) {
         <DialogTitle id="alert-dialog-title">
           <Trans>Harmonogram</Trans>
         </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            <Timeline>
-              {harmonogram.map((line) => {
-                return (
-                  <TimelineItem key={line.time}>
-                    <TimelineOppositeContent color="textSecondary">
-                      {line.time}
-                    </TimelineOppositeContent>
-                    <TimelineSeparator>
-                      <TimelineDot color="primary" />
-                      <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                      {language === "cs" ? line.text.cs : line.text.en}
-                    </TimelineContent>
-                  </TimelineItem>
-                );
-              })}
-            </Timeline>
-          </DialogContentText>
-        </DialogContent>
+
+        <Timeline
+          sx={{
+            [`& .${timelineOppositeContentClasses.root}`]: {
+              flex: 0.2,
+            },
+          }}
+        >
+          {harmonogram.map((line, index) => {
+            return (
+              <TimelineItem key={line.time}>
+                <TimelineOppositeContent color="textSecondary">
+                  {line.time}
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                  <TimelineDot color="secondary" sx={{ margin: "2px" }}>
+                    <StaticImage
+                      src="../../../images/footerLogo.png"
+                      alt="logo"
+                      placeholder="blurred"
+                      layout="fixed"
+                      width={20}
+                      height={20}
+                    />
+                  </TimelineDot>
+                  {index !== harmonogram.length - 1 && <TimelineConnector />}
+                </TimelineSeparator>
+                <TimelineContent>
+                  {language === "cs" ? line.text.cs : line.text.en}
+                </TimelineContent>
+              </TimelineItem>
+            );
+          })}
+        </Timeline>
       </Dialog>
     </>
   );

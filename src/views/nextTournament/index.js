@@ -173,33 +173,37 @@ const NextTournament = ({ data }) => {
         </Box> */}
       </Container2>
       <Container>
-        <Grid container direction="row" justifyContent="center" spacing={1}>
-          <Grid item xs={12} md={7}>
-            <HarmonogramModal harmonogram={harmonogram} />
+        <MuiContainer maxWidth="sm">
+          <Grid container direction="row" justifyContent="center" spacing={1}>
+            <Grid item xs={12}>
+              <HarmonogramModal harmonogram={harmonogram} />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                variant="contained"
+                color="success"
+                component={"a"}
+                href={open.registration}
+                target="_blank"
+                sx={{ backgroundColor: color }}
+                fullWidth
+              >
+                <Trans>Registrace</Trans>
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={7}>
-            <Button
-              variant="contained"
-              color="success"
-              component={"a"}
-              href={open.registration}
-              target="_blank"
-              sx={{ backgroundColor: color }}
-              fullWidth
-            >
-              <Trans>Registrace</Trans>
-            </Button>
-          </Grid>
-        </Grid>
+        </MuiContainer>
       </Container>
       <MuiContainer maxWidth="sm">
         <MyPortableText
           value={language === "cs" ? description._rawCs : description._rawEn}
         />
       </MuiContainer>
-      <Container>
-        <Tabs gala={gala} superfight={superfight} open={open} />
-      </Container>
+      <MuiContainer maxWidth="md">
+        <Container>
+          <Tabs gala={gala} superfight={superfight} open={open} />
+        </Container>
+      </MuiContainer>
     </>
   );
 };

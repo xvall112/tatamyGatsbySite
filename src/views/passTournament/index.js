@@ -112,37 +112,39 @@ const Index = ({ data }) => {
           </ImageListItem>
         </ImageList>
       </Container2>
-      <Container>
-        <Grid container direction="row" justifyContent="center" spacing={1}>
-          {galaResults && (
-            <Grid item xs={12} md={7}>
-              <Button
-                variant="contained"
-                component={"a"}
-                href={galaResults}
-                target="_blank"
-                fullWidth
-              >
-                <Trans>Výsledky GALA</Trans>
-              </Button>
-            </Grid>
-          )}
-          {openResults && (
-            <Grid item xs={12} md={7}>
-              <Button
-                variant="contained"
-                component={"a"}
-                href={openResults}
-                target="_blank"
-                fullWidth
-              >
-                <Trans>Výsledky OPEN</Trans>
-              </Button>
-            </Grid>
-          )}
-        </Grid>
-      </Container>
-      <MuiContainer maxWidth="md">
+      <MuiContainer maxWidth="sm">
+        <Container>
+          <Grid container direction="row" justifyContent="center" spacing={1}>
+            {galaResults && (
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  component={"a"}
+                  href={galaResults}
+                  target="_blank"
+                  fullWidth
+                >
+                  <Trans>Výsledky GALA</Trans>
+                </Button>
+              </Grid>
+            )}
+            {openResults && (
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  component={"a"}
+                  href={openResults}
+                  target="_blank"
+                  fullWidth
+                >
+                  <Trans>Výsledky OPEN</Trans>
+                </Button>
+              </Grid>
+            )}
+          </Grid>
+        </Container>
+      </MuiContainer>
+      <MuiContainer maxWidth="sm">
         <MyPortableText
           value={language === "cs" ? description._rawCs : description._rawEn}
         />
