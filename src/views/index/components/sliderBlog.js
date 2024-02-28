@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import { Link } from "gatsby-plugin-react-i18next";
+import { Link, useI18next } from "gatsby-plugin-react-i18next";
 
 //materialUi
 import {
@@ -17,43 +17,14 @@ import { useTheme } from "@mui/material/styles";
 
 export const query = graphql`
   query {
-    news: allSanityNews(sort: { date: DESC }) {
-      nodes {
-        id
-        title
-        subtitle
-        link
-        dateCompare: date
-        date(formatString: "DD.MM.YYYY")
-        titleImage {
-          asset {
-            filename
-            gatsbyImageData(
-              placeholder: BLURRED
-              layout: CONSTRAINED
-              height: 160
-            )
-          }
-        }
-      }
-    }
-    # blog: allSanityBlog(sort: { date: DESC }) {
+    # news: allSanityNews(sort: { date: DESC }) {
     #   nodes {
-    #     author
     #     id
+    #     title
+    #     subtitle
+    #     link
     #     dateCompare: date
     #     date(formatString: "DD.MM.YYYY")
-    #     title {
-    #       cs
-    #       en
-    #     }
-    #     subtitle {
-    #       cs
-    #       en
-    #     }
-    #     slug {
-    #       current
-    #     }
     #     titleImage {
     #       asset {
     #         filename
@@ -66,14 +37,44 @@ export const query = graphql`
     #     }
     #   }
     # }
+    blog: allSanityBlog(sort: { date: DESC }) {
+      nodes {
+        author
+        id
+        dateCompare: date
+        date(formatString: "DD.MM.YYYY")
+        title {
+          cs
+          en
+        }
+        subtitle {
+          cs
+          en
+        }
+        slug {
+          current
+        }
+        titleImage {
+          asset {
+            filename
+            gatsbyImageData(
+              placeholder: BLURRED
+              layout: CONSTRAINED
+              height: 160
+            )
+          }
+        }
+      }
+    }
   }
 `;
 
 const SliderNews = () => {
+  const { language } = useI18next();
   const [sortedNews, setSortedNews] = useState(null);
   const theme = useTheme();
   const data = useStaticQuery(query);
-  const { news } = data;
+  const { blog } = data;
   // const newsArray = news.nodes.map((item) => ({ ...item, tag: "article" }));
   // const blogArray = blog.nodes.map((item) => ({
   //   ...item,
@@ -128,15 +129,56 @@ const SliderNews = () => {
           },
         }}
       >
-        {news?.nodes?.map((news) => {
+        {blog?.nodes?.map((blog) => {
           return (
-            <SwiperSlide key={news.id}>
+            <SwiperSlide key={blog.id}>
               <Card sx={{ width: "100%" }}>
                 <CardActionArea
+                   component={Link}
+                   to={`/${blog.slug.current}`}
+                  sx={{
+                    "& img": {
+                      borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                      WebkitBorderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
+                    },
+                  }}
+                >
+                  <GatsbyImage
+                    image={blog.titleImage.asset.gatsbyImageData}
+                    alt={blog.titleImage.asset.filename}
+                    style={{ width: "100%" }}
+                  />
+                  <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                      {blog.author}
+                    </Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      fontWeight={700}
+                    >
+                      {language === "cs" ? blog.title.cs : blog.title.en}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {blog.date}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+
+              {/*  <Box
+                sx={{
+                  borderRadius: theme.rounded,
+                  overflow: "hidden",
+                }}
+              >
+                <Box
                   component={"a"}
                   href={news.link}
                   target="_blank"
                   sx={{
+                    textDecoration: "none",
                     "& img": {
                       borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
                       WebkitBorderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
@@ -148,24 +190,25 @@ const SliderNews = () => {
                     alt={news.titleImage.asset.filename}
                     style={{ width: "100%" }}
                   />
-                  <CardContent>
-                    <Typography variant="body2" color="text.secondary">
+                  <Box
+                    p={(8, 2, 8, 2)}
+                    sx={{
+                      backgroundColor: theme.palette.background.level1,
+                    }}
+                  >
+                    <Typography variant="subtitle1" color="text.primary">
                       {news.subtitle}
                     </Typography>
                     <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
+                      variant="h6"
                       fontWeight={700}
+                      color="text.primary"
                     >
                       {news.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {news.date}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
+                  </Box>
+                </Box>
+              </Box> */}
             </SwiperSlide>
           );
         })}

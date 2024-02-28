@@ -10,12 +10,12 @@ import Container from "../../components/Container";
 export const query = graphql`
   query {
     generalPartners: allSanityPartners(
-      filter: { sanityId: { eq: "generalPartners" } }
+      filter: { Id: { eq: "generalPartners" } }
     ) {
       nodes {
         link
         name
-        sanityId
+        Id
         logo {
           asset {
             gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
@@ -25,12 +25,12 @@ export const query = graphql`
       }
     }
     mainPartners: allSanityPartners(
-      filter: { sanityId: { eq: "mainPartners" } }
+      filter: { Id: { eq: "mainPartners" } }
     ) {
       nodes {
         link
         name
-        sanityId
+        Id
         logo {
           asset {
             gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
@@ -39,11 +39,11 @@ export const query = graphql`
         }
       }
     }
-    partners: allSanityPartners(filter: { sanityId: { eq: "partners" } }) {
+    partners: allSanityPartners(filter: { Id: { eq: "partners" } }) {
       nodes {
         link
         name
-        sanityId
+        Id
         logo {
           asset {
             gatsbyImageData(
@@ -57,12 +57,12 @@ export const query = graphql`
       }
     }
     mediaPartners: allSanityPartners(
-      filter: { sanityId: { eq: "mediaPartners" } }
+      filter: { Id: { eq: "mediaPartners" } }
     ) {
       nodes {
         link
         name
-        sanityId
+        Id
         logo {
           asset {
             gatsbyImageData(

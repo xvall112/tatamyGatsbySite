@@ -17,7 +17,7 @@ import { MdSubtitles } from "react-icons/md";
 
 const query = graphql`
   query MyQuery {
-    allSanityBlog(limit: 4) {
+    allSanityBlog(limit: 3) {
       nodes {
         slug {
           current
@@ -79,7 +79,7 @@ const SimilarStories = () => {
             variant="outlined"
             color="primary"
             size="large"
-            to={"/news"}
+            to={"/blog"}
           >
             Zobrazit vše
           </Button>

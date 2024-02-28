@@ -8,6 +8,7 @@ import Container2 from "../../components/Container2";
 import Title from "../../components/Title";
 import SliderVideo from "./components/sliderVideo";
 import SliderNews from "./components/sliderNews";
+import SliderBlog from "./components/sliderBlog";
 
 const Index = () => {
   return (
@@ -25,6 +26,10 @@ const Index = () => {
       <Container>
         <Title title={<Trans>Novinky</Trans>} />
         <SliderNews />
+      </Container>
+      <Container>
+        <Title title={<Trans>Blog</Trans>} />
+        <SliderBlog />
       </Container>
     </>
   );

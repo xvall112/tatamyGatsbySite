@@ -83,7 +83,7 @@ const Blog = ({ data }) => {
                 <IconButton
                   aria-label="back"
                   component={Link}
-                  to={"/news"}
+                  to={"/blog"}
                   sx={{
                     position: "absolute",
                     top: "10px",

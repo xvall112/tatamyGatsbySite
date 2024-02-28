@@ -1,8 +1,8 @@
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
-import { Link, useI18next } from "gatsby-plugin-react-i18next";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Link, useI18next, Trans } from "gatsby-plugin-react-i18next";
+
 //components
 import Container from "../../components/Container";
 import Title from "../../components/Title";
@@ -17,13 +17,22 @@ import { CardActionArea } from "@mui/material";
 
 export const query = graphql`
   query {
-    news: allSanityNews(sort: { date: DESC }) {
+    blog: allSanityBlog(sort: { date: DESC }) {
       nodes {
+        author
         id
         date(formatString: "DD.MM.YYYY")
-        title
-        subtitle
-        link
+        title {
+          cs
+          en
+        }
+        subtitle {
+          cs
+          en
+        }
+        slug {
+          current
+        }
         titleImage {
           asset {
             filename
@@ -47,17 +56,15 @@ const Index = () => {
   return (
     <>
       <Container>
-        <Title title={<Trans>Novinky</Trans>} />
+        {blog.nodes.length !== 0 && <Title title={<Trans>Blog</Trans>} />}
         <Grid container direction="row" spacing={2}>
-          {}
-          {news.nodes.map((item) => {
+          {blog.nodes.map((item) => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
                 <Card sx={{ width: "100%" }}>
                   <CardActionArea
-                    component={"a"}
-                    href={item.link}
-                    target="_blank"
+                    component={Link}
+                    to={`/${item.slug.current}`}
                     sx={{
                       "& img": {
                         borderRadius: `${theme.rounded} ${theme.rounded} 0 0`,
@@ -72,7 +79,7 @@ const Index = () => {
                     />
                     <CardContent>
                       <Typography variant="body2" color="text.secondary">
-                        {item.subtitle}
+                        {item.author}
                       </Typography>
                       <Typography
                         gutterBottom
@@ -80,7 +87,7 @@ const Index = () => {
                         component="div"
                         fontWeight={700}
                       >
-                        {item.title}
+                        {language === "cs" ? item.title.cs : item.title.en}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         {item.date}
