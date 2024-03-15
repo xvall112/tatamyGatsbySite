@@ -161,7 +161,7 @@ const Index = ({ data }) => {
             </Box>
           </Container>
         )}
-        {gallery.asset && (
+        {gallery.length !== 0 && (
           <Container>
             <Title title={"Gallery"} />
             <ImageList variant="masonry" cols={isMd ? 3 : 1} gap={8}>
