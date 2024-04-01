@@ -145,21 +145,21 @@ const Hero = () => {
                         {car.name}
                       </Typography>
                     }
-                    subtitle={
-                      car.date && (
-                        <Typography
-                          align="center"
-                          variant="h3"
-                          fontWeight="700"
-                          style={{
-                            textShadow: `${theme.palette.primary.main} 1px 0 10px`,
-                            boxShadow: `${theme.palette.primary.main} 1px 0 10px`,
-                          }}
-                        >
-                          <Countdown date={car.date} renderer={renderer} />
-                        </Typography>
-                      )
-                    }
+                    // subtitle={
+                    //   car.date && (
+                    //     <Typography
+                    //       align="center"
+                    //       variant="h3"
+                    //       fontWeight="700"
+                    //       style={{
+                    //         textShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                    //         boxShadow: `${theme.palette.primary.main} 1px 0 10px`,
+                    //       }}
+                    //     >
+                    //       <Countdown date={car.date} renderer={renderer} />
+                    //     </Typography>
+                    //   )
+                    // }
                   />
                 </ImageListItem>
               </ImageList>
