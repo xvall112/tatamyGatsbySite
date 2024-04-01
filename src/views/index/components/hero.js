@@ -129,7 +129,7 @@ const Hero = () => {
                       height: "100%",
                     }}
                   />
-                  <ImageListItemBar
+                  {/* <ImageListItemBar
                     sx={{ height: "100%" }}
                     position={"center"}
                     title={
@@ -144,7 +144,7 @@ const Hero = () => {
                       >
                         {car.name}
                       </Typography>
-                    }
+                    } 
                     // subtitle={
                     //   car.date && (
                     //     <Typography
@@ -160,7 +160,7 @@ const Hero = () => {
                     //     </Typography>
                     //   )
                     // }
-                  />
+                  />*/}
                 </ImageListItem>
               </ImageList>
               {/*   <Box
