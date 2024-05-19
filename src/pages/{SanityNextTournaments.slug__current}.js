@@ -17,6 +17,11 @@ export const query = graphql`
       slug {
         current
       }
+      buttonLabel {
+        cs
+        en
+      }
+      openInNewTab
       color
       date(formatString: "DD.MM.YYYY")
       description {

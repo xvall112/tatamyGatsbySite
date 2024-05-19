@@ -32,6 +32,9 @@ const StyledImg = styled(GatsbyImage)(({ theme }) => ({
 
 const NextTournament = ({ data }) => {
   const {
+    url,
+    openInNewTab,
+    buttonLabel,
     color,
     date,
     description,
@@ -183,12 +186,12 @@ const NextTournament = ({ data }) => {
                 variant="contained"
                 color="success"
                 component={"a"}
-                href={open.registration}
-                target="_blank"
+                href={url}
+                target={openInNewTab ? "_blank" : "_self"}
                 sx={{ backgroundColor: color }}
                 fullWidth
               >
-                <Trans>Registrace</Trans>
+                {buttonLabel[language]}
               </Button>
             </Grid>
           </Grid>
@@ -201,7 +204,11 @@ const NextTournament = ({ data }) => {
       </MuiContainer>
       <MuiContainer maxWidth="md">
         <Container>
-          <Tabs gala={gala} superfight={superfight} open={open} />
+          <Tabs
+            gala={gala && gala}
+            superfight={superfight && superfight}
+            open={open && open}
+          />
         </Container>
       </MuiContainer>
     </>

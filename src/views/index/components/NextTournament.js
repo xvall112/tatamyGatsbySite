@@ -12,6 +12,12 @@ export const query = graphql`
   query {
     sanityHomePage {
       nextTournament {
+        url
+        openInNewTab
+        buttonLabel {
+          en
+          cs
+        }
         name
         date(formatString: "DD.MM.YYYY")
 
@@ -91,9 +97,7 @@ const NextTournament = () => {
               </Grid>
               <Grid item xs={12}>
                 <Typography align="center" variant="h6" fontWeight={700}>
-                  {language === "cs"
-                    ? nextTournament.shortDescription.cs
-                    : nextTournament.shortDescription.en}
+                  {nextTournament.shortDescription[language]}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
@@ -111,10 +115,11 @@ const NextTournament = () => {
                   variant="contained"
                   color="success"
                   component={"a"}
-                  href={nextTournament.open.registration}
+                  target={nextTournament.openInNewTab ? "_blank" : "_self"}
+                  href={nextTournament.url}
                   sx={{ mt: 1, backgroundColor: `${nextTournament.color}` }}
                 >
-                  <Trans>Registrace</Trans>
+                  <Trans>{nextTournament.buttonLabel[language]}</Trans>
                 </Button>
               </Grid>
             </Grid>
