@@ -22,6 +22,7 @@ export const query = graphql`
         en
       }
       openInNewTab
+      url
       color
       date(formatString: "DD.MM.YYYY")
       description {
